@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BookS.Models.SACH>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="row"> 
+        @foreach (var i in Model)
+        {
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <img src="~/image/@i.Anhbia" alt="">
+                    <div class="caption">
+                        
+                        <p><h4>
+                            <a href="@Url.Action("ChitietSP","Home",new {id=i.MaSach})">@i.TenSach</a>
+                        </h4></p>
+                        <h4 class="pull-left">$@i.GiaBan</h4>
+                        
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
