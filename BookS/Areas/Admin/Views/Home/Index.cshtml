@@ -21,12 +21,13 @@
 </style>
 <body>
     <div class="container">
-        <form action="#" method="post" id="form">
+        @(Html.BeginForm()){
             <img src="~/image/icon/loginAdmin.png" style="width: 120px; height: 120px; margin-top: -60px;">
-            <div><p><input placeholder="Enter Username" type="text" name="" style="width: 300px;height: 40px;margin-top: 50px;font-size: 20px;"></p></div>
-            <div><p><input placeholder="Enter Password" type="password" name="" style="width: 300px;height: 40px;font-size: 20px"></p></div>
+            <div><p><input placeholder="Enter Username" type="text" name="userName" style="width: 300px;height: 40px;margin-top: 50px;font-size: 20px;"></p></div>
+            <div><p><input placeholder="Enter Password" type="password" name="passWord" style="width: 300px;height: 40px;font-size: 20px"></p></div>
             <input type="submit" name="" style="padding: 15px 25px; background-color: #0ECF25; border: none;border-radius: 5px;" value="LOGIN">
-        </form>
+        }
+        
     </div>
 
 </body>

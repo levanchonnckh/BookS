@@ -30,12 +30,15 @@ namespace BookS.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertCHU_DE(CHU_DE instance);
-    partial void UpdateCHU_DE(CHU_DE instance);
-    partial void DeleteCHU_DE(CHU_DE instance);
+    partial void InsertADMIN(ADMIN instance);
+    partial void UpdateADMIN(ADMIN instance);
+    partial void DeleteADMIN(ADMIN instance);
     partial void InsertVIET_SACH(VIET_SACH instance);
     partial void UpdateVIET_SACH(VIET_SACH instance);
     partial void DeleteVIET_SACH(VIET_SACH instance);
+    partial void InsertCHU_DE(CHU_DE instance);
+    partial void UpdateCHU_DE(CHU_DE instance);
+    partial void DeleteCHU_DE(CHU_DE instance);
     partial void InsertCT_DON_HANG(CT_DON_HANG instance);
     partial void UpdateCT_DON_HANG(CT_DON_HANG instance);
     partial void DeleteCT_DON_HANG(CT_DON_HANG instance);
@@ -86,11 +89,11 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<CHU_DE> CHU_DEs
+		public System.Data.Linq.Table<ADMIN> ADMINs
 		{
 			get
 			{
-				return this.GetTable<CHU_DE>();
+				return this.GetTable<ADMIN>();
 			}
 		}
 		
@@ -99,6 +102,14 @@ namespace BookS.Models
 			get
 			{
 				return this.GetTable<VIET_SACH>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CHU_DE> CHU_DEs
+		{
+			get
+			{
+				return this.GetTable<CHU_DE>();
 			}
 		}
 		
@@ -151,84 +162,92 @@ namespace BookS.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHU_DE")]
-	public partial class CHU_DE : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ADMIN")]
+	public partial class ADMIN : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _MaCD;
+		private string _USER_NAME;
 		
-		private string _TenChuDe;
+		private string _PASSWORD;
 		
-		private EntitySet<SACH> _SACHes;
+		private string _ID;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMaCDChanging(int value);
-    partial void OnMaCDChanged();
-    partial void OnTenChuDeChanging(string value);
-    partial void OnTenChuDeChanged();
+    partial void OnUSER_NAMEChanging(string value);
+    partial void OnUSER_NAMEChanged();
+    partial void OnPASSWORDChanging(string value);
+    partial void OnPASSWORDChanged();
+    partial void OnIDChanging(string value);
+    partial void OnIDChanged();
     #endregion
 		
-		public CHU_DE()
+		public ADMIN()
 		{
-			this._SACHes = new EntitySet<SACH>(new Action<SACH>(this.attach_SACHes), new Action<SACH>(this.detach_SACHes));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaCD
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="NVarChar(50)")]
+		public string USER_NAME
 		{
 			get
 			{
-				return this._MaCD;
+				return this._USER_NAME;
 			}
 			set
 			{
-				if ((this._MaCD != value))
+				if ((this._USER_NAME != value))
 				{
-					this.OnMaCDChanging(value);
+					this.OnUSER_NAMEChanging(value);
 					this.SendPropertyChanging();
-					this._MaCD = value;
-					this.SendPropertyChanged("MaCD");
-					this.OnMaCDChanged();
+					this._USER_NAME = value;
+					this.SendPropertyChanged("USER_NAME");
+					this.OnUSER_NAMEChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenChuDe", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TenChuDe
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD", DbType="NVarChar(50)")]
+		public string PASSWORD
 		{
 			get
 			{
-				return this._TenChuDe;
+				return this._PASSWORD;
 			}
 			set
 			{
-				if ((this._TenChuDe != value))
+				if ((this._PASSWORD != value))
 				{
-					this.OnTenChuDeChanging(value);
+					this.OnPASSWORDChanging(value);
 					this.SendPropertyChanging();
-					this._TenChuDe = value;
-					this.SendPropertyChanged("TenChuDe");
-					this.OnTenChuDeChanged();
+					this._PASSWORD = value;
+					this.SendPropertyChanged("PASSWORD");
+					this.OnPASSWORDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHU_DE_SACH", Storage="_SACHes", ThisKey="MaCD", OtherKey="MaCD")]
-		public EntitySet<SACH> SACHes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ID
 		{
 			get
 			{
-				return this._SACHes;
+				return this._ID;
 			}
 			set
 			{
-				this._SACHes.Assign(value);
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
 			}
 		}
 		
@@ -250,18 +269,6 @@ namespace BookS.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_SACHes(SACH entity)
-		{
-			this.SendPropertyChanging();
-			entity.CHU_DE = this;
-		}
-		
-		private void detach_SACHes(SACH entity)
-		{
-			this.SendPropertyChanging();
-			entity.CHU_DE = null;
 		}
 	}
 	
@@ -478,6 +485,120 @@ namespace BookS.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHU_DE")]
+	public partial class CHU_DE : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MaCD;
+		
+		private string _TenChuDe;
+		
+		private EntitySet<SACH> _SACHes;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaCDChanging(int value);
+    partial void OnMaCDChanged();
+    partial void OnTenChuDeChanging(string value);
+    partial void OnTenChuDeChanged();
+    #endregion
+		
+		public CHU_DE()
+		{
+			this._SACHes = new EntitySet<SACH>(new Action<SACH>(this.attach_SACHes), new Action<SACH>(this.detach_SACHes));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MaCD
+		{
+			get
+			{
+				return this._MaCD;
+			}
+			set
+			{
+				if ((this._MaCD != value))
+				{
+					this.OnMaCDChanging(value);
+					this.SendPropertyChanging();
+					this._MaCD = value;
+					this.SendPropertyChanged("MaCD");
+					this.OnMaCDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenChuDe", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TenChuDe
+		{
+			get
+			{
+				return this._TenChuDe;
+			}
+			set
+			{
+				if ((this._TenChuDe != value))
+				{
+					this.OnTenChuDeChanging(value);
+					this.SendPropertyChanging();
+					this._TenChuDe = value;
+					this.SendPropertyChanged("TenChuDe");
+					this.OnTenChuDeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CHU_DE_SACH", Storage="_SACHes", ThisKey="MaCD", OtherKey="MaCD")]
+		public EntitySet<SACH> SACHes
+		{
+			get
+			{
+				return this._SACHes;
+			}
+			set
+			{
+				this._SACHes.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_SACHes(SACH entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHU_DE = this;
+		}
+		
+		private void detach_SACHes(SACH entity)
+		{
+			this.SendPropertyChanging();
+			entity.CHU_DE = null;
 		}
 	}
 	

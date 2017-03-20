@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BanSach" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-585O54I;Initial Catalog=BanSach;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BanSachConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.CHU_DE" Member="CHU_DEs">
-    <Type Name="CHU_DE">
-      <Column Name="MaCD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenChuDe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="CHU_DE_SACH" Member="SACHes" ThisKey="MaCD" OtherKey="MaCD" Type="SACH" />
+  <Table Name="dbo.ADMIN" Member="ADMINs">
+    <Type Name="ADMIN">
+      <Column Name="USER_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PASSWORD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.VIET_SACH" Member="VIET_SACHes">
@@ -15,6 +15,13 @@
       <Column Name="Vitri" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="SACH_VIET_SACH" Member="SACH" ThisKey="Masach" OtherKey="MaSach" Type="SACH" IsForeignKey="true" />
       <Association Name="TAC_GIA_VIET_SACH" Member="TAC_GIA" ThisKey="MaTG" OtherKey="MaTG" Type="TAC_GIA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHU_DE" Member="CHU_DEs">
+    <Type Name="CHU_DE">
+      <Column Name="MaCD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenChuDe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="CHU_DE_SACH" Member="SACHes" ThisKey="MaCD" OtherKey="MaCD" Type="SACH" />
     </Type>
   </Table>
   <Table Name="dbo.CT_DON_HANG" Member="CT_DON_HANGs">

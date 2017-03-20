@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BookS.Models.SACH>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>quan ly sach</title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.MaSach</th>
+                    <td>@item.TenSach</td>
+                    <td>@item.GiaBan</td>
+                    <td>
+                        <img src="~/image/@item.Anhbia" style="width:70px;height:100px;"/>
+                    </td>
+                    <td>
+                        <a data-value="@item.MaSach"
+                           href="javascript:void(0)" class="btnEdit">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
