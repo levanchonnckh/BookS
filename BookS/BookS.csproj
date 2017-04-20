@@ -118,7 +118,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\Admin\css\admin.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\shop-homepage.css" />
@@ -134,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Models\Sach_NXB.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,9 +167,11 @@
     <Content Include="Views\Home\SPChude.cshtml" />
     <Content Include="Views\Home\SPNXB.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ChitietSP.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\mBooks.cshtml" />
+    <Content Include="Views\Home\LoginFacebook.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ThemSachMoi.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLySach.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -179,7 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\css\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="image\bia\" />
     <Folder Include="image\icon\" />

@@ -4,31 +4,58 @@
 }
 
 <!DOCTYPE html>
+
 <html>
 <head>
-    <title>trang admin</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/css/shop-homepage.css" rel="stylesheet">
+    
 </head>
-<style type="text/css">
-    .container {
-        width: 500px;
-        height: 400px;
-        margin: 0 auto;
-        margin-top: 150px;
-        align-content: center;
-        background-color: rgba(52,73,94,0.7);
-        text-align: center;
-    }
-</style>
 <body>
-    <div class="container">
-        @(Html.BeginForm()){
-            <img src="~/image/icon/loginAdmin.png" style="width: 120px; height: 120px; margin-top: -60px;">
-            <div><p><input placeholder="Enter Username" type="text" name="userName" style="width: 300px;height: 40px;margin-top: 50px;font-size: 20px;"></p></div>
-            <div><p><input placeholder="Enter Password" type="password" name="passWord" style="width: 300px;height: 40px;font-size: 20px"></p></div>
-            <input type="submit" name="" style="padding: 15px 25px; background-color: #0ECF25; border: none;border-radius: 5px;" value="LOGIN">
-        }
-        
-    </div>
+   <form class="form-horizontal">
+       <div class="form-group">
+           <label for="email" class="col-md-4 text-right">
+               Email
+           </label>
+           <input name="email" class="col-md-4" id="text_field" placeholder="nhap email"/>
+       </div>
+       <div class="form-group">
+           <label for="email" class="col-md-4 text-right">
+               Password
+           </label>
+           <input name="password" class="col-md-4" id="text_field" placeholder="Password" type="password" />
+       </div>
+       <div class="form-group">
+           <div class="col-md-offset-4">
+               <div class="checkbox-inline">
+                   <input type="checkbox"/> Remember
+               </div>
+           </div>
+       </div>
+       <div class="form-group">
+           <div class="col-md-offset-4">
+               <button type="button" class="btn btn-primary">Login</button>
+           </div>
+       </div>
+   </form>
 
+
+
+
+
+
+
+
+
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

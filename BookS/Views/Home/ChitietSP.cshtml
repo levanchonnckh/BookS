@@ -1,34 +1,18 @@
 ﻿@model IEnumerable<BookS.Models.SACH>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
-@foreach (var i in Model)
-{
-    <style>
-        .button {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
-    </style>
-    <div>
-        <div>
-            <img src="~/image/@i.Anhbia" alt="" style="align-items:center">
-        </div>
-        <div>
-            <h4>@i.Mota</h4>
-            <h4>Gia ban: @i.GiaBan vnd</h4>
-            <div style="">
-                <input type="button" class="button" value="MUA">
-            </div>
-            
-        </div>
+
+<h3>THÔNG TIN CHI TIẾT SÁCH</h3>
+<div class="col-md-12">
+    <div class="col-md-3">
+        <img src="~/image/@Model.Single().Anhbia" class="img-thumbnail"/>
     </div>
-}
+    <div class="col-md-9">
+        <h2>@Model.Single().TenSach</h2>
+        <p>@Model.Single().Mota</p>
+        <h2>@Model.Single().GiaBan VND</h2>
+        <button class="btn btn-danger">Đặt mua</button>
+    </div>
+</div>

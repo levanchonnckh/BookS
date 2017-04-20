@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BookS.Areas.Admin.Models;
 
 namespace BookS.Areas.Admin.Controllers
 {
+  
     public class HomeController : Controller
     {
         DataClasses1DataContext _data = new DataClasses1DataContext();
@@ -16,35 +18,21 @@ namespace BookS.Areas.Admin.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Index(FormCollection fie)
+
+        public ActionResult ThemSachMoi()
         {
-            string user = Request.Form["userName"];
-            string pass = Request.Form["passWord"];
-            var _user = (from c in _data.ADMINs where user == c.USER_NAME select c);
-            if ((user.Equals(_user.First().USER_NAME)&&user.Equals(_user.First().PASSWORD))==true)
-            {
-                //neu dung tai khoan
-                return RedirectToAction("mBooks");
-            }
-                return this.Index();
+            return View();
         }
 
-
-        public ActionResult mBooks()
+        public ActionResult QuanLySach()
         {
-
-            var lSach = LaySach(8);
-            return View(lSach);
+            var sach_nxb = from sach in _data.SACHes
+                           join nxb in _data.NHA_XUAT_BANs on sach.MaNXB equals nxb.MaNXB
+                           select new Sach_NXB(sach, nxb.TenNXB);
+            
+            return View(sach_nxb.ToList());
         }
-
-        public List<SACH> LaySach(int count)
-        {
-            return _data.SACHes.Take(count).ToList();
-        }
-
-
-
+       
 
     }
 }

@@ -1,0 +1,133 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ThemSachMoi</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/css/shop-homepage.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <!--Navbar Header Start Here-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Admin</a>
+            </div>
+            <!--Navbar Header End Here-->
+            <!--Menu Start Here-->
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Thêm sách mới</a></li>
+                <li><a href="#">Quản lý sách</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                
+            </ul>
+            <!--Menu End Here-->
+        </div>
+    </nav>
+     
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="tensach" class="col-md-4 text-right">
+                Tên sách
+            </label>
+            <input name="tensach" class="col-md-4" placeholder="nhap email" />
+        </div>
+        <div class="form-group">
+            <label for="giaban" class="col-md-4 text-right">
+                Giá bán
+            </label>
+            <input name="giaban" class="col-md-4" placeholder="gia ban" />
+        </div>
+        <div class="form-group">
+           
+            <label for="mota" class="col-md-4 text-right">
+                Mô tả
+            </label>
+            <textarea name="mota" class="col-md-4" rows="10"></textarea>
+            <img id="blah" src="#" alt="your image" class="img-thumbnail" />
+        </div>
+        
+        <div class="form-group">
+            <label for="file" class="col-md-4 text-right">
+                Chọn ảnh
+            </label>
+            <input name="file" class="col-md-4" type="file" onchange="readURL(this);" />
+            
+        </div>
+        
+        <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
+
+
+        <div class="form-group">
+            <label for="mcd" class="col-md-4 text-right">
+                Mã chủ đề
+            </label>
+            <select name="mcd" class="col-md-4" type="file">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nxb" class="col-md-4 text-right">
+                Nhà xuất bản
+            </label>
+            <select name="nxb" class="col-md-4" type="file">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary col-md-2 col-md-offset-4" type="submit">Submit</button>
+        </div>
+        
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
