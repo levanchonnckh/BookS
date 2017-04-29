@@ -1,133 +1,96 @@
-﻿
+﻿@model BookS.Models.SACH
+
 @{
-    Layout = null;
+    ViewBag.Title = "Themsachmoi";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<!DOCTYPE html>
+<h2>Themsachmoi</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ThemSachMoi</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="~/css/shop-homepage.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-fixed-top">
-        <div class="container-fluid">
-            <!--Navbar Header Start Here-->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Admin</a>
+
+@using (Html.BeginForm("Themsachmoi","Home",FormMethod.Post,new { @enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>SACH</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenSach, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenSach, "", new { @class = "text-danger" })
             </div>
-            <!--Navbar Header End Here-->
-            <!--Menu Start Here-->
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Thêm sách mới</a></li>
-                <li><a href="#">Quản lý sách</a></li>
-                <li><a href="#">Liên hệ</a></li>
-                
-            </ul>
-            <!--Menu End Here-->
-        </div>
-    </nav>
-     
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label for="tensach" class="col-md-4 text-right">
-                Tên sách
-            </label>
-            <input name="tensach" class="col-md-4" placeholder="nhap email" />
-        </div>
-        <div class="form-group">
-            <label for="giaban" class="col-md-4 text-right">
-                Giá bán
-            </label>
-            <input name="giaban" class="col-md-4" placeholder="gia ban" />
-        </div>
-        <div class="form-group">
-           
-            <label for="mota" class="col-md-4 text-right">
-                Mô tả
-            </label>
-            <textarea name="mota" class="col-md-4" rows="10"></textarea>
-            <img id="blah" src="#" alt="your image" class="img-thumbnail" />
-        </div>
-        
-        <div class="form-group">
-            <label for="file" class="col-md-4 text-right">
-                Chọn ảnh
-            </label>
-            <input name="file" class="col-md-4" type="file" onchange="readURL(this);" />
-            
-        </div>
-        
-        <script>
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('#blah')
-                            .attr('src', e.target.result)
-                            .width(150)
-                            .height(200);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        </script>
-
-
-        <div class="form-group">
-            <label for="mcd" class="col-md-4 text-right">
-                Mã chủ đề
-            </label>
-            <select name="mcd" class="col-md-4" type="file">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nxb" class="col-md-4 text-right">
-                Nhà xuất bản
-            </label>
-            <select name="nxb" class="col-md-4" type="file">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
         </div>
 
         <div class="form-group">
-            <button class="btn btn-primary col-md-2 col-md-offset-4" type="submit">Submit</button>
+            @Html.LabelFor(model => model.GiaBan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.GiaBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GiaBan, "", new { @class = "text-danger" })
+            </div>
         </div>
-        
 
-    </form>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea name="Mota" class="col-md-4" rows="10"></textarea>
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Anhbia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="file"/>
+                @*thongbao*@
+                <h4 style="color:red;">@ViewBag.thongbao</h4>
+               
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayCapNhat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <input type="date" name="NgayCapNhat"/>
+                @Html.ValidationMessageFor(model => model.NgayCapNhat)
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoLuongTon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaCD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaCD")
+            </div>
+        </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaNXB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaNXB")
+            </div>
+        </div>
 
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 
+<div>
+    @Html.ActionLink("Back to List", "Sach")
+</div>
 
-
-
-
-    <!-- /.container -->
-    <!-- jQuery -->
-    <script src="/js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
-</body>
-</html>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

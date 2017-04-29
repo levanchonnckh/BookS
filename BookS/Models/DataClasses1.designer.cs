@@ -22,7 +22,7 @@ namespace BookS.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BanSach")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="BookS")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -60,7 +60,7 @@ namespace BookS.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BanSachConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["BookSConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -168,22 +168,22 @@ namespace BookS.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _USER_NAME;
+		private string _USER_ADMIN;
 		
 		private string _PASSWORD;
 		
-		private string _ID;
+		private string _HO_TEN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnUSER_NAMEChanging(string value);
-    partial void OnUSER_NAMEChanged();
+    partial void OnUSER_ADMINChanging(string value);
+    partial void OnUSER_ADMINChanged();
     partial void OnPASSWORDChanging(string value);
     partial void OnPASSWORDChanged();
-    partial void OnIDChanging(string value);
-    partial void OnIDChanged();
+    partial void OnHO_TENChanging(string value);
+    partial void OnHO_TENChanged();
     #endregion
 		
 		public ADMIN()
@@ -191,27 +191,27 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="NVarChar(50)")]
-		public string USER_NAME
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_ADMIN", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string USER_ADMIN
 		{
 			get
 			{
-				return this._USER_NAME;
+				return this._USER_ADMIN;
 			}
 			set
 			{
-				if ((this._USER_NAME != value))
+				if ((this._USER_ADMIN != value))
 				{
-					this.OnUSER_NAMEChanging(value);
+					this.OnUSER_ADMINChanging(value);
 					this.SendPropertyChanging();
-					this._USER_NAME = value;
-					this.SendPropertyChanged("USER_NAME");
-					this.OnUSER_NAMEChanged();
+					this._USER_ADMIN = value;
+					this.SendPropertyChanged("USER_ADMIN");
+					this.OnUSER_ADMINChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PASSWORD", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string PASSWORD
 		{
 			get
@@ -231,22 +231,22 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HO_TEN", DbType="NVarChar(50)")]
+		public string HO_TEN
 		{
 			get
 			{
-				return this._ID;
+				return this._HO_TEN;
 			}
 			set
 			{
-				if ((this._ID != value))
+				if ((this._HO_TEN != value))
 				{
-					this.OnIDChanging(value);
+					this.OnHO_TENChanging(value);
 					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
+					this._HO_TEN = value;
+					this.SendPropertyChanged("HO_TEN");
+					this.OnHO_TENChanged();
 				}
 			}
 		}
@@ -536,7 +536,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenChuDe", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenChuDe", DbType="NVarChar(50)")]
 		public string TenChuDe
 		{
 			get
@@ -608,11 +608,13 @@ namespace BookS.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _SoDH;
+		private int _MaDH;
 		
 		private int _Masach;
 		
 		private System.Nullable<int> _Soluong;
+		
+		private System.Nullable<decimal> _Dongia;
 		
 		private EntityRef<DON_DAT_HANG> _DON_DAT_HANG;
 		
@@ -622,12 +624,14 @@ namespace BookS.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnSoDHChanging(int value);
-    partial void OnSoDHChanged();
+    partial void OnMaDHChanging(int value);
+    partial void OnMaDHChanged();
     partial void OnMasachChanging(int value);
     partial void OnMasachChanged();
     partial void OnSoluongChanging(System.Nullable<int> value);
     partial void OnSoluongChanged();
+    partial void OnDongiaChanging(System.Nullable<decimal> value);
+    partial void OnDongiaChanged();
     #endregion
 		
 		public CT_DON_HANG()
@@ -637,26 +641,26 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoDH", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int SoDH
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDH", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaDH
 		{
 			get
 			{
-				return this._SoDH;
+				return this._MaDH;
 			}
 			set
 			{
-				if ((this._SoDH != value))
+				if ((this._MaDH != value))
 				{
 					if (this._DON_DAT_HANG.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnSoDHChanging(value);
+					this.OnMaDHChanging(value);
 					this.SendPropertyChanging();
-					this._SoDH = value;
-					this.SendPropertyChanged("SoDH");
-					this.OnSoDHChanged();
+					this._MaDH = value;
+					this.SendPropertyChanged("MaDH");
+					this.OnMaDHChanged();
 				}
 			}
 		}
@@ -705,7 +709,27 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DON_DAT_HANG_CT_DON_HANG", Storage="_DON_DAT_HANG", ThisKey="SoDH", OtherKey="MaDH", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dongia", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Dongia
+		{
+			get
+			{
+				return this._Dongia;
+			}
+			set
+			{
+				if ((this._Dongia != value))
+				{
+					this.OnDongiaChanging(value);
+					this.SendPropertyChanging();
+					this._Dongia = value;
+					this.SendPropertyChanged("Dongia");
+					this.OnDongiaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DON_DAT_HANG_CT_DON_HANG", Storage="_DON_DAT_HANG", ThisKey="MaDH", OtherKey="MaDH", IsForeignKey=true)]
 		public DON_DAT_HANG DON_DAT_HANG
 		{
 			get
@@ -728,11 +752,11 @@ namespace BookS.Models
 					if ((value != null))
 					{
 						value.CT_DON_HANGs.Add(this);
-						this._SoDH = value.MaDH;
+						this._MaDH = value.MaDH;
 					}
 					else
 					{
-						this._SoDH = default(int);
+						this._MaDH = default(int);
 					}
 					this.SendPropertyChanged("DON_DAT_HANG");
 				}
@@ -841,7 +865,7 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDH", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDH", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaDH
 		{
 			get
@@ -965,7 +989,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DON_DAT_HANG_CT_DON_HANG", Storage="_CT_DON_HANGs", ThisKey="MaDH", OtherKey="SoDH")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DON_DAT_HANG_CT_DON_HANG", Storage="_CT_DON_HANGs", ThisKey="MaDH", OtherKey="MaDH")]
 		public EntitySet<CT_DON_HANG> CT_DON_HANGs
 		{
 			get
@@ -1097,7 +1121,7 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKH", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaKH", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaKH
 		{
 			get
@@ -1137,7 +1161,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaiKhoan", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaiKhoan", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TaiKhoan
 		{
 			get
@@ -1157,7 +1181,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string MatKhau
 		{
 			get
@@ -1217,7 +1241,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DienThoai", DbType="NVarChar(15)")]
 		public string DienThoai
 		{
 			get
@@ -1530,7 +1554,7 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSach", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSach", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaSach
 		{
 			get
@@ -1570,7 +1594,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBan", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaBan", DbType="NVarChar(50)")]
 		public string GiaBan
 		{
 			get
@@ -1590,7 +1614,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mota", DbType="NText", UpdateCheck=UpdateCheck.Never)]
 		public string Mota
 		{
 			get
@@ -1610,7 +1634,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anhbia", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Anhbia
 		{
 			get
@@ -1897,7 +1921,7 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTG", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTG", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MaTG
 		{
 			get
@@ -1937,7 +1961,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diachi", DbType="NVarChar(100)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diachi", DbType="NVarChar(200)")]
 		public string Diachi
 		{
 			get
@@ -1957,7 +1981,7 @@ namespace BookS.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tieusu", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tieusu", DbType="NText", UpdateCheck=UpdateCheck.Never)]
 		public string Tieusu
 		{
 			get

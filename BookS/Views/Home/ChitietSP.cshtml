@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BookS.Models.SACH>
+﻿@using BookS.Models
+@model BookS.Models.SACH
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -7,12 +8,14 @@
 <h3>THÔNG TIN CHI TIẾT SÁCH</h3>
 <div class="col-md-12">
     <div class="col-md-3">
-        <img src="~/image/@Model.Single().Anhbia" class="img-thumbnail"/>
+        <img src="~/image/@Model.Anhbia" class="img-thumbnail" />
     </div>
     <div class="col-md-9">
-        <h2>@Model.Single().TenSach</h2>
-        <p>@Model.Single().Mota</p>
-        <h2>@Model.Single().GiaBan VND</h2>
-        <button class="btn btn-danger">Đặt mua</button>
+        <h2>@Model.TenSach</h2>
+        <p>@Model.Mota</p>
+        <h2>@Model.GiaBan VND</h2>
+        <button class="btn btn-danger" id="Datmua">
+            <a href="@Url.Action("ThemGiohang","Giohang",new { @iMasach = Model.MaSach,@strURL = Request.Url.ToString()})">Đặt mua</a>
+        </button>
     </div>
 </div>

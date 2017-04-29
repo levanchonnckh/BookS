@@ -1,29 +1,28 @@
-﻿@model IEnumerable<BookS.Models.SACH>
+﻿@using BookS.Models
+@using PagedList.Mvc;
+
+@model PagedList.PagedList<SACH>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div class="row"> 
+
+
+  <div class="row">
         @foreach (var i in Model)
         {
-            <div class="col-sm-4 col-lg-4 col-md-4">
+
+            <div class="col-sm-3 col-lg-3 col-md-3">
                 <div class="thumbnail">
                     <img src="~/image/@i.Anhbia" alt="">
+                    
                     <div class="caption">
-                        
-                        <p><h4>
+                        <h5>
                             <a href="@Url.Action("ChitietSP","Home",new {id=i.MaSach})">@i.TenSach</a>
-                        </h4></p>
-                        <h4 class="pull-left">$@i.GiaBan</h4>
-                        
+                        </h5>
+                        <h4 class="pull-left">@i.GiaBan vnd</h4>
+
                     </div>
                     <div class="ratings">
                         <p class="pull-right">15 reviews</p>
@@ -39,5 +38,19 @@
             </div>
         }
     </div>
-</body>
-</html>
+
+@*Tạo liện kết các trang*@
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount;
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+    }
+</style>
+
+
+

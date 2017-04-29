@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BookS.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace BookS.Controllers
 {
@@ -14,18 +16,25 @@ namespace BookS.Controllers
         DataClasses1DataContext _data = new DataClasses1DataContext();
 
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
 
-            var sachL = LaySach(5);
+
+            var sachL = LaySach(7);
             
-            return View(sachL);
+            return View(sachL.ToPagedList(pageNum,pageSize));
         }
 
+        //lay sach moi theo ngay cap nhat
         public List<SACH> LaySach(int count)
         {
             return _data.SACHes.Take(count).ToList();
         }
+
+
+        
         
 
         public ActionResult Chude()
@@ -53,7 +62,7 @@ namespace BookS.Controllers
 
         public ActionResult ChitietSP(int id)
         {
-            var sach = from s in _data.SACHes where s.MaSach == id select s;
+            var sach = _data.SACHes.SingleOrDefault(n => n.MaSach == id);
             return PartialView(sach);
         }
 
