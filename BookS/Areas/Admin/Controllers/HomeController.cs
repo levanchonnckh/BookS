@@ -197,6 +197,7 @@ namespace BookS.Areas.Admin.Controllers
 
                     if (System.IO.File.Exists(path))
                     {
+
                         ViewBag.thongbao = "hinh anh da ton tai";
                     }
                     else

@@ -162,6 +162,7 @@
     <Compile Include="Areas\Admin\Models\Sach_NXB.cs" />
     <Compile Include="Controllers\GiohangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,13 +191,9 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Home\Chude.cshtml" />
-    <Content Include="Views\Home\NXB.cshtml" />
     <Content Include="Views\Home\SPChude.cshtml" />
-    <Content Include="Views\Home\SPNXB.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Views\Home\ChitietSP.cshtml" />
-    <Content Include="Views\Home\LoginFacebook.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Views\NguoiDung\Dangky.cshtml" />
     <Content Include="Views\NguoiDung\Dangnhap.cshtml" />
@@ -209,6 +206,8 @@
     <Content Include="Areas\Admin\Views\Home\Sach.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Themsachmoi.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
