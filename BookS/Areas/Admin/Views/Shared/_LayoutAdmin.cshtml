@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="signin.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/css/shop-homepage.css" rel="stylesheet">
+
+    <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
+    <title>@ViewBag.Title</title>
+</head>
+<body style="margin-top:-70px">
+    <nav class="navbar-default container">
+        <ul class="nav navbar-default">
+            <li>DEVICE</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+
+
+
+
+
+    <!-- /.container -->
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+</body>
+</html>

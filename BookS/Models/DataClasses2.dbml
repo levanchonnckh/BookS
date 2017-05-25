@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TinTuc" Class="DataClasses2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-585O54I;Initial Catalog=TinTuc;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TinTucConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADMIN" Member="ADMIN_tts">
+    <Type Name="ADMIN_tt">
+      <Column Name="MaAdmin" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenAdmin" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ADMIN_TIN_TUC" Member="TIN_TUC_tts" ThisKey="MaAdmin" OtherKey="MaNguoiDang" Type="TIN_TUC_tt" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CHU_DE" Member="CHU_DE_tts">
+    <Type Name="CHU_DE_tt">
+      <Column Name="MaChuDe" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenChuDe" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="CHU_DE_TIN_TUC" Member="TIN_TUC_tts" ThisKey="MaChuDe" OtherKey="MaCD" Type="TIN_TUC_tt" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIN_TUC" Member="TIN_TUC_tts">
+    <Type Name="TIN_TUC_tt">
+      <Column Name="MaTin" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TieuDe" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tomtat" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NoiDung" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AnhBia" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaNguoiDang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayDang" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Association Name="ADMIN_TIN_TUC" Member="ADMIN_tt" ThisKey="MaNguoiDang" OtherKey="MaAdmin" Type="ADMIN_tt" IsForeignKey="true" />
+      <Association Name="CHU_DE_TIN_TUC" Member="CHU_DE_tt" ThisKey="MaCD" OtherKey="MaChuDe" Type="CHU_DE_tt" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

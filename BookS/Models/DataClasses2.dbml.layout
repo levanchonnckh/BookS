@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses2">
+  <DataContextMoniker Name="/DataClasses2DataContext" />
+  <nestedChildShapes>
+    <classShape Id="adc55767-8ebb-4ad3-bbbc-5cf48db6eecb" absoluteBounds="0.75, 5.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClasses2DataContext/ADMIN_tt" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e2eb3ab0-6396-4910-860a-e0924bb50f9e" absoluteBounds="0.765, 5.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8ee596c8-2405-499f-9712-4bae0fe30671" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/DataClasses2DataContext/CHU_DE_tt" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c49725d7-bb46-48b5-88e1-ff08d48cedfa" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="03f51c3a-b8fe-4312-9539-115b51923edf" absoluteBounds="3.5, 1, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DataClasses2DataContext/TIN_TUC_tt" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6202dcd1-1c46-47f9-94dd-efe27f4df5dd" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 6.16429768880208); (4.5 : 6.16429768880208); (4.5 : 3.34780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses2DataContext/ADMIN_tt/ADMIN_TIN_TUC" />
+      <nodes>
+        <classShapeMoniker Id="adc55767-8ebb-4ad3-bbbc-5cf48db6eecb" />
+        <classShapeMoniker Id="03f51c3a-b8fe-4312-9539-115b51923edf" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.09699625651042); (3.5 : 2.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses2DataContext/CHU_DE_tt/CHU_DE_TIN_TUC" />
+      <nodes>
+        <classShapeMoniker Id="8ee596c8-2405-499f-9712-4bae0fe30671" />
+        <classShapeMoniker Id="03f51c3a-b8fe-4312-9539-115b51923edf" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

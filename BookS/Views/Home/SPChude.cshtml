@@ -1,92 +1,67 @@
-﻿@model IEnumerable<BookS.Models.SACH>
+﻿@model BookS.Models.device_head
 @{ 
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<div style="background-color:#e3e4e5;height:100px;margin-top:-19px">
-    <div class="col-md-8 col-md-offset-2" style="height:100px">
-        <ul class="nav navbar-nav">
-            <li style="margin-right:30px;margin-left:50px;">
-                <a style="padding-top:10px;text-align:center" href="">
-                    <div>
-                        <img src="https://dummyimage.com/70x70/000/aaa" />
-                    </div>
-                    <span>mac</span>
-                </a>
-            </li>
-            <li style="margin-right:30px">
-                <a style="padding:10px;text-align:center" href="">
-                    <div>
-                        <img src="https://dummyimage.com/70x70/000/aaa" />
-                    </div>
-                    <span>mac</span>
-                </a>
-            </li>
-            <li style="margin-right:30px">
-                <a style="padding:10px;text-align:center" href="">
-                    <div>
-                        <img src="https://dummyimage.com/70x70/000/aaa" />
-                    </div>
-                    <span>mac</span>
-                </a>
-            </li>
-            <li style="margin-right:30px">
-                <a style="padding:10px;text-align:center" href="">
-                    <div>
-                        <img src="https://dummyimage.com/70x70/000/aaa" />
-                    </div>
-                    <span>mac</span>
-                </a>
-            </li>
-            <li style="margin-right:30px">
-                <a style="padding:10px;text-align:center" href="">
-                    <div>
-                        <img src="https://dummyimage.com/70x70/000/aaa" />
-                    </div>
-                    <span>mac</span>
-                </a>
-            </li>
-            <li style="margin-right:30px">
-                <a style="padding:10px;text-align:center" href="">
-                    <div>
-                        <img src="https://dummyimage.com/70x70/000/aaa" />
-                    </div>
-                    <span>mac</span>
-                </a>
-            </li>
 
+<!--cac dong san pham của tung chu de: nhu mac: macbook,imac,macpro,mac mini
+    hiển thị tóm lược thông tin về các sản phẩm trong từng dòng
+    như: macbook có gì hay, imac gì nổi trooik rồi đi vào chi tiết-->
+
+<div style="background-color:#e3e4e5;height:100px;margin-top:-19px;padding-left:200px;padding-right:200px;" class="container">
+    <div class="" style="height:100px;">
+        <ul class="nav nav-justified">
+            @{
+                foreach (var i in Model.icon)
+                {
+                    <li style="margin-right:30px;margin-left:50px;">
+                        <a style="padding-top:10px;text-align:center" href="@Url.Action("ChitietSP","Home")">
+                            <div>
+                                <img src="~/image/ICON/@i.IMG_ICON" />
+                            </div>
+                            @if(Int32.Parse(@i.MaCD)==5){
+                                <span style="font-size:12px; display:block">@i.Name</span>
+                            }else{
+                                <span>@i.Name</span>
+                                
+                            }
+                            
+                        </a>
+                    </li>
+                }
+            }
 
         </ul>
     </div>
 </div>
 
-<div class="col-md-10 col-lg-offset-1">
-    @{ 
-        for(var i = 0; i < 5; i++)
+<div class="col-md-12" style="margin-top:50px;">
+    <hr />
+    @{
+
+        foreach (var i in Model.device)
         {
-            if (i % 2 == 0)
-            {
-                <div style="margin-top:30px;background-color:aquamarine;height:300px;">
-                    <div class="col-md-6">
-                        <img src="https://dummyimage.com/500x300/000/000baa&text=500x300+@i" />
-                    </div>
-                    <div class="col-md-6" style="padding-top:70px;">
-                        <p>Our goal with MacBook was to do the impossible: engineer a full‑size experience into the lightest and most compact Mac notebook ever. That meant reimagining every element to make it not only lighter and thinner but also better. The result is more than just a new notebook. It’s the future of the notebook. And now, with sixth‑generation Intel processors, improved graphics performance, faster flash storage, and up to 10 hours of battery life,* MacBook is even more capable.</p>
-                    </div>
+
+            <div class="col-md-4 text-center" style="padding:20px 20px 20px">
+                <div>
+                    <img src="~/image/DEVICE/@i.AnhBia" style="width:170px;height:170px"/>
                 </div>
-                
-            }
-            else
-            {
-                <div style="margin-top:30px;background-color:aliceblue;height:300px;">
-                    <div class="col-md-6" style="padding-top:70px;">
-                        <p>Our goal with MacBook was to do the impossible: engineer a full‑size experience into the lightest and most compact Mac notebook ever. That meant reimagining every element to make it not only lighter and thinner but also better. The result is more than just a new notebook. It’s the future of the notebook. And now, with sixth‑generation Intel processors, improved graphics performance, faster flash storage, and up to 10 hours of battery life,* MacBook is even more capable.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="https://dummyimage.com/500x300/000/000baa&text=500x300+@i+r" />
-                    </div>
+                <div>
+                    <h4>@i.TenDevice</h4>
+                    <h4 style="color:red">@(@Int32.Parse(@i.GiaBan)*22000) VND</h4>
+                    <a href="@Url.Action("GioHang","Giohang")">Buy</a>
+
+                    
+
+
+
+
                 </div>
-            }
+            </div>
         }
+
     }
 </div>
+
+
+

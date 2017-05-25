@@ -18,25 +18,60 @@ namespace BookS.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var gDevice = _data.DEVICEs.Where(dev => dev.MaDevice == 5 || dev.MaDevice == 9 || dev.MaDevice == 15 || dev.MaDevice == 2 || dev.MaDevice == 4 || dev.MaDevice == 25).Select(dev => dev).ToList();
+            return View(gDevice);
         }
 
-        //lay sach moi theo ngay cap nhat
        
 
 
-        
-        
+        public ActionResult SPChude(int id)
+        {
+            //id = 1 iphone
+            //id = 2 iPad
+            //id = 3 iMac
+            //id = 4 MacBook
+            //id = 5 watch
+            //id = 6 accessoris
+            device_head ret = new device_head();
+            ret.icon = new List<ICON>();
+            ret.device = new List<DEVICE>();
+            
+            var data = (from de in _data.DEVICEs select de).ToList();
+            
+            var icon = (from ic in _data.ICONs select ic).ToList();
+            foreach(var i in data)
+            {
+                if (i.MaCD == id)
+                {
+                    ret.device.Add(i);
+                }
+            }
 
-      
-      
-        public ActionResult SPChude(int id=1)
+            foreach(var i in icon)
+            {
+                if (Int32.Parse(i.MaCD) == id)
+                {
+                    ret.icon.Add(i);
+                }
+            }
+           
+            return View(ret);
+        }
+
+
+        public ActionResult ChitietSP(int id=1)
         {
             return View();
         }
 
+        public ActionResult ChitietSP1(int id = 1)
+        {
 
-        public ActionResult ChitietSP(int id)
+            return View();
+        }
+        
+        public ActionResult contact()
         {
             return View();
         }

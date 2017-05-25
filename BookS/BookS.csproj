@@ -130,19 +130,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\admin\Views\Shared\signin.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\shop-homepage.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="image\icon\cart.png" />
+    <Content Include="image\today_xlarge.jpg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.js" />
-    <Content Include="Areas\Admin\Views\Home\Chitietsach.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Xoasach.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Suasach.cshtml" />
+    <Content Include="Models\DataClasses2.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses2.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\admin\Views\web.config" />
+    <Content Include="Areas\admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\admin\Views\Admin\admin_home.cshtml" />
+    <Content Include="Areas\admin\Views\Admin\device.cshtml" />
+    <Content Include="Areas\admin\Views\Admin\CreatNew.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -157,9 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Models\Sach_NXB.cs" />
+    <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\GiohangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -172,6 +180,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataClasses2.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses2.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\device_head.cs" />
     <Compile Include="Models\Giohang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -192,22 +206,20 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Home\SPChude.cshtml" />
-    <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Views\Home\ChitietSP.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Views\NguoiDung\Dangky.cshtml" />
     <Content Include="Views\NguoiDung\Dangnhap.cshtml" />
     <Content Include="Views\Giohang\GioHang.cshtml" />
     <Content Include="Views\Giohang\GiohangPartial.cshtml" />
     <Content Include="Views\Giohang\Dathang.cshtml" />
-    <Content Include="Views\Giohang\Xacnhandonhang.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutPage1.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Sach.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Themsachmoi.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\Giohang\thongTinGiaoHang.cshtml" />
+    <Content Include="Views\Giohang\checkOut.cshtml" />
+    <Content Include="Views\News\Introduct.cshtml" />
+    <Content Include="Views\Home\contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -217,8 +229,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\css\" />
-    <Folder Include="image\bia\" />
+    <Folder Include="Areas\admin\Models\" />
+    <Folder Include="image\bia_TinTuc\" />
+    <Folder Include="image\CHI_TIET\" />
+    <Folder Include="image\DEVICE\" />
+    <Folder Include="image\ICON\" />
+    <Folder Include="Models\new\" />
+    <Folder Include="tinymce\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -226,6 +243,11 @@
   <ItemGroup>
     <None Include="Models\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\DataClasses2.dbml.layout">
+      <DependentUpon>DataClasses2.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>

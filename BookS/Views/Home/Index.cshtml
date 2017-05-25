@@ -1,78 +1,68 @@
-﻿@using BookS.Models
-@using PagedList.Mvc;
-
-@model PagedList.PagedList<SACH>
+﻿@model IEnumerable<BookS.Models.DEVICE>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
+
+<div style="padding-top:50px;">
     <h3>Sản phẩm bán chạy nhất</h3>
-    <div>
-        <div class="col-md-4 text-center">
-            <div>
-                <img src="https://dummyimage.com/260x320/000/fff" />
-            </div>
-            <div>
-                <h4>Mac</h4>
-                <p>Descriptive text examples can also be found in many songs, since songs are meant to capture your emotions and to invoke a feeling.</p>
-            </div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div>
-                <img src="https://dummyimage.com/260x320/000/fff" />
-            </div>
-            <div>
-                <h4>iPhone</h4>
-                <p>Descriptive text examples can also be found in many songs, since songs are meant to capture your emotions and to invoke a feeling.</p>
-            </div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div>
-                <img src="https://dummyimage.com/260x320/000/fff" />
-            </div>
-            <div>
-                <h4>iPad</h4>
-                <p>Descriptive text examples can also be found in many songs, since songs are meant to capture your emotions and to invoke a feeling.</p>
-            </div>
-        </div>
-    </div>
+    <hr />
+    @{
+        var dem = 0;
+        foreach (var i in Model)
+        {
+            if (dem == 3)
+            {
+                break;
+            }
+            else
+            {
+                <div class="col-md-4 text-center">
+                    <div>
+                        <img src="~/image/DEVICE/@i.AnhBia" style="width:280px;height:280px" />
+                    </div>
+                    <div>
+                        <h4>@i.TenDevice</h4>
+
+                    </div>
+                </div>
+            }
+            dem++;
+
+        }
+    }
 </div>
 
-<div>
-    <h3 style="padding-top:50px">Sản phẩm mới nhất</h3>
-    <div>
-        <div class="col-md-4 text-center">
-            <div>
-                <img src="https://dummyimage.com/260x320/000/fff" />
-            </div>
-            <div>
-                <h4>Mac</h4>
-                <p>Descriptive text examples can also be found in many songs, since songs are meant to capture your emotions and to invoke a feeling.</p>
-            </div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div>
-                <img src="https://dummyimage.com/260x320/000/fff" />
-            </div>
-            <div>
-                <h4>iPhone</h4>
-                <p>Descriptive text examples can also be found in many songs, since songs are meant to capture your emotions and to invoke a feeling.</p>
-            </div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div>
-                <img src="https://dummyimage.com/260x320/000/fff" />
-            </div>
-            <div>
-                <h4>iPad</h4>
-                <p>Descriptive text examples can also be found in many songs, since songs are meant to capture your emotions and to invoke a feeling.</p>
-            </div>
-        </div>
-    </div>
+
+
+<div style="margin-top:400px;">
+
+    <h3>Sản phẩm mới nhất</h3>
+    <hr />
+    @{
+        var dem2 = 0;
+        foreach (var i in Model)
+        {
+            if (3 <= dem2 && dem2 < 7)
+            {
+                <div class="col-md-4 text-center">
+                    <div>
+                        <img src="~/image/DEVICE/@i.AnhBia" style="width:280px;height:280px" />
+                    </div>
+                    <div>
+                        <h4>@i.TenDevice</h4>
+                    </div>
+                </div>
+            }
+
+            dem2++;
+
+        }
+    }
 </div>
 
-<div class="col-md-10 col-lg-offset-1">
-    <iframe src="https://www.youtube.com/embed/WVPRkcczXCY?ecver=2" width="100%" height="480" frameborder="0" style="" allowfullscreen></iframe>
-</div>
+    <div class="col-md-10 col-lg-offset-1">
+        <hr />
+        <iframe src="https://www.youtube.com/embed/WVPRkcczXCY?ecver=2" width="100%" height="480" frameborder="0" style="" allowfullscreen></iframe>
+    </div>
 

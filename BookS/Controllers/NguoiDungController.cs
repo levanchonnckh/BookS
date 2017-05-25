@@ -78,7 +78,7 @@ namespace BookS.Controllers
         {
             return View();
         }
-
+        //
         public ActionResult Dangnhap(FormCollection collection)
         {
             var tendn = collection["TenDN"];

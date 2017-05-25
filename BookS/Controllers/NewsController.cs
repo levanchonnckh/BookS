@@ -12,8 +12,9 @@ namespace BookS.Controllers
     public class NewsController : Controller
     {
 
-        DataClasses1DataContext _data = new DataClasses1DataContext();
-        // GET: News
+        DataClasses2DataContext _data = new DataClasses2DataContext();
+        // GET: News 
+
         public ActionResult Index(int? page)
         {
             int pageSize = 5;
@@ -23,11 +24,17 @@ namespace BookS.Controllers
             var sachL = LaySach(7);
 
             return View(sachL.ToPagedList(pageNum, pageSize));
+           
         }
 
-        public List<SACH> LaySach(int count)
+        public List<TIN_TUC_tt> LaySach(int count)
         {
-            return _data.SACHes.Take(count).ToList();
+            return _data.TIN_TUC_tts.Take(count).ToList();
+        }
+
+        public ActionResult Introduct()
+        {
+            return View();
         }
     }
 }

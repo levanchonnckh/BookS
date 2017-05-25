@@ -3,91 +3,96 @@
 
 @{
     ViewBag.Title = "Đơn đặt hàng";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2 style="text-align: center">THÔNG TIN HÀNG HÓA</h2>
-<table align="center" border="1">
-    <tr style="text-align: center; font-weight: bold">
-        <td>Mã sách</td>
-        <td>Tên sách</td>
-        <td>Ảnh bìa</td>
-        <td>Số lượng</td>
-        <td>Đơn giá</td>
-        <td>Thành tiền</td>
-    </tr>
+<h2 style="text-align: center">MACBOOK PRO</h2>
 
-    @foreach (var item in Model)
-    {
-        <tr style="text-align: center; font-weight: bold">
-            <td> @item.iMasach</td>
-            <td>@item.sTensach</td>
-            <td><img src="~/images/HinhSanPham/@item.sAnhbia"></td>
-            @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMaSp = item.iMasach }))
-            {
-                <td>
-                    @item.iSoluong
-                </td>
+<h3 style="text-align:center">Choose your new MacBook Pro.</h3>
 
-                <td>@String.Format("{0:0,0}", item.dDongia)</td>
-                <td>@String.Format("{0:0,0}", item.dThanhtien)</td>
-            }
-        </tr>
-    }
+<div class="row col-lg-offset-5" style="padding-left:20px;margin-top:50px;">
+    <div class="btn-group btn-group-lg" role="group" aria-label="Large button group" style="">
+        <button type="button" class="btn btn-default">13-inch</button>
+        <button type="button" class="btn btn-default">15-inch</button>
+    </div>
+</div>
+<div style="text-align:center;margin-top:50px;">
+    <h3>13-inch MacBook Pro</h3>
+    <h4>Get help buying.  Chat now with coo</h4>
+</div>
+
+<div style="margin-top:50px">
+    <div class="col-md-12">
+        <div class="col-md-10 container">
+            <ul class="col-md-offset-2" style="list-style-type:none">
+                <li class="col-md-4" style="text-align:center">
+                    <div id="top" >
+                        <img src="https://dummyimage.com/400x400/000/fff" style="width:70%;height:70%" />
+                    </div>
+                    <div id="bottom">
+                        <ul style="margin-top:30px;text-align:left">
+                            <li>2.0GHz dual-core Intel Core i5 processor</li>
+                            <li>Turbo Boost up to 3.1GHz</li>
+                            <li>8GB 1866MHz memory</li>
+                            <li>256GB PCIe-based SSD1</li>
+                            <li>Intel Iris Graphics 540</li>
+                            <li>Two Thunderbolt 3 ports</li>
+                        </ul>
+                        <h2>520$</h2>
+                        <button type="button" class="btn btn-success">
+                            Add to Cart
+                            @Url.Action("ThemGiohang", "Giohang")
+                        </button>
+                    </div>
+                </li>
+                <li class="col-md-4" style="text-align:center">
+                    <div id="top">
+                        <img src="https://dummyimage.com/400x400/000/fff" style="width:70%;height:70%" />
+                    </div>
+                    <div id="bottom">
+                        <ul style="margin-top:30px;text-align:left">
+                            <li>2.0GHz dual-core Intel Core i5 processor</li>
+                            <li>Turbo Boost up to 3.1GHz</li>
+                            <li>8GB 1866MHz memory</li>
+                            <li>256GB PCIe-based SSD1</li>
+                            <li>Intel Iris Graphics 540</li>
+                            <li>Two Thunderbolt 3 ports</li>
+                        </ul>
+                        <h2>520$</h2>
+                        <button type="button" class="btn btn-success">
+                            Add to Cart
+                            @Url.Action("ThemGiohang", "Giohang")
+                        </button>
+                    </div>
+                    
+                </li>
+                <li class="col-md-4" style="text-align:center">
+                    <div id="top">
+                        <img src="https://dummyimage.com/400x400/000/fff" style="width:70%;height:70%" />
+                    </div>
+                    <div id="bottom">
+                        <ul style="margin-top:30px;text-align:left">
+                            <li>2.0GHz dual-core Intel Core i5 processor</li>
+                            <li>Turbo Boost up to 3.1GHz</li>
+                            <li>8GB 1866MHz memory</li>
+                            <li>256GB PCIe-based SSD1</li>
+                            <li>Intel Iris Graphics 540</li>
+                            <li>Two Thunderbolt 3 ports</li>
+                        </ul>
+                        <h2>520$</h2>
+                        <button type="button" class="btn btn-success">
+                            Add to Cart
+                            @Url.Action("ThemGiohang", "Giohang")
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<style>
+    
+</style>
 
 
-    <tr style="font-weight: bold; text-align:right; color :red">
-        <td colspan="3">Số lượng sách: @ViewBag.Tongsoluong </td>
-        <td colspan="3">Tổng tiền:@String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</td>
-    </tr>
-
-
-    <tr style="font-weight: bold; text-align:right; color :blue">
-        <td colspan="6">
-            @Html.ActionLink("TRỞ VỀ GIỎ HÀNG", "Giohang", "GioHang")
-        </td>
-
-    </tr>
-</table>
-
-<h2 style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
-@{
-    KHACH_HANG kh = (KHACH_HANG)Session["Taikhoan"];
-}
-
-<table align="center">
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary(true)
-        <tr style="height: 40px">
-            <td>Họ tên khách hàng</td>
-            <td style="font-weight: bold">@kh.HoTen</td>
-        </tr>
-        <tr style="height: 40px">
-            <td>Địa chỉ</td>
-            <td style="font-weight: bold">@kh.DiaChi</td>
-        </tr>
-        <tr style="height: 40px">
-            <td>Điện thoại</td>
-            <td style="font-weight: bold">@kh.DienThoai</td>
-        </tr>
-        <tr style="height: 40px">
-            <td>Ngày đặt</td>
-            <td style="font-weight: bold">@DateTime.Now.ToShortDateString()</td>
-        </tr>
-
-
-        <tr style="height: 40px">
-            <td>Ngày giao hàng</td>
-            <td style="font-weight: bold">
-                <input type="date" name="Ngaygiao" />
-            </td>
-        </tr>
-        <tr style="height: 40px">
-            <td></td>
-            <td>
-                <input type="submit" value="ĐỒNG Ý ĐẶT HÀNG" />
-            </td>
-        </tr>
-    }
-</table>

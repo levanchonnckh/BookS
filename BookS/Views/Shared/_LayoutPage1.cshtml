@@ -24,32 +24,45 @@
     <![endif]-->
 </head>
 
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">coo</a>
-            </div>
-            <div class="col-md-5 col-md-offset-3">
-                <ul class="nav navbar-nav">
-                    <li style="margin-left:50px;"><a href="@Url.Action("SPChude","Home")">Mac</a></li>
-                    <li><a href="@Url.Action("SPChude","Home")">iPhone</a></li>
-                    <li><a href="@Url.Action("SPChude","Home")">iPad</a></li>
-                    <li><a href="@Url.Action("SPChude","Home")">Watch</a></li>
-                    <li><a href="@Url.Action("SPChude","Home")">News</a></li>
-                    <li><a href="@Url.Action("SPChude","Home")">Contact</a></li>
-                </ul>
-            </div>
+<body style="background-color:#F6F6F6">
+    <div class="container" >
+        <div class="row">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+              
+                <div class="container">
+                    <div style="margin-left:100px;margin-right:100px;">
+                        <ul class="nav nav-justified" style="margin:auto">
+                            <li class="navbar-brand">coo</li>
+                            <li><a href="@Url.Action("SPChude","Home",new {id = 4})">Mac</a></li>
+                            <li><a href="@Url.Action("SPChude","Home",new {id = 1})">iPhone</a></li>
+                            <li><a href="@Url.Action("SPChude","Home",new {id = 2})">iPad</a></li>
+                            <li><a href="@Url.Action("SPChude","Home",new {id = 5})">Watch</a></li>
+                            <li><a href="@Url.Action("Index","News")">News</a></li>
+                            <li><a href="@Url.Action("SPChude","Home")">Contact</a></li>
+                            <li><a href="@Url.Action("Introduct","News")">Introduce</a></li>
+                            <li><a href="@Url.Action("GioHang","Giohang")"><span class="glyphicon glyphicon-shopping-cart" style="color:red"></span>1</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+               
+            </nav>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Login</a></li>
-            </ul>
+
+            @RenderBody()
+
+
+
+            
         </div>
-    </nav>
+    </div>
+   
+    
+ 
+    
 
-    @RenderBody()
 
-    <div class="container">
+    <div class="container" style="margin-top:100px;">
         <hr>
         <!-- Footer -->
         <footer>
@@ -66,5 +79,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/bootstrap.js"></script>
+    
 </body>
 </html>
