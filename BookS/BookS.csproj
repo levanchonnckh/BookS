@@ -152,6 +152,8 @@
     <Content Include="Areas\admin\Views\Admin\admin_home.cshtml" />
     <Content Include="Areas\admin\Views\Admin\device.cshtml" />
     <Content Include="Areas\admin\Views\Admin\CreatNew.cshtml" />
+    <Content Include="Areas\admin\Views\Admin\Detail.cshtml" />
+    <Content Include="Areas\admin\Views\Admin\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -168,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\admin\Models\deviceDetail.cs" />
     <Compile Include="Controllers\GiohangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -208,7 +211,6 @@
     <Content Include="Views\Home\SPChude.cshtml" />
     <Content Include="Views\Home\ChitietSP.cshtml" />
     <Content Include="Views\NguoiDung\Dangky.cshtml" />
-    <Content Include="Views\NguoiDung\Dangnhap.cshtml" />
     <Content Include="Views\Giohang\GioHang.cshtml" />
     <Content Include="Views\Giohang\GiohangPartial.cshtml" />
     <Content Include="Views\Giohang\Dathang.cshtml" />
@@ -220,6 +222,8 @@
     <Content Include="Views\Giohang\checkOut.cshtml" />
     <Content Include="Views\News\Introduct.cshtml" />
     <Content Include="Views\Home\contact.cshtml" />
+    <Content Include="Views\Home\ChitietSP1.cshtml" />
+    <Content Include="Views\NguoiDung\Dangnhap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -229,7 +233,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\admin\Models\" />
     <Folder Include="image\bia_TinTuc\" />
     <Folder Include="image\CHI_TIET\" />
     <Folder Include="image\DEVICE\" />

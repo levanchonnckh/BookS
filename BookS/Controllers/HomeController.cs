@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BookS.Models;
 using PagedList;
 using PagedList.Mvc;
+using BookS.Areas.admin.Models;
 
 namespace BookS.Controllers
 {
@@ -55,20 +56,55 @@ namespace BookS.Controllers
                     ret.icon.Add(i);
                 }
             }
-           
+
             return View(ret);
         }
 
 
-        public ActionResult ChitietSP(int id=1)
+        public ActionResult ChitietSP(int id = 1)
         {
             return View();
         }
 
-        public ActionResult ChitietSP1(int id = 1)
+        public ActionResult ChitietSP1(int id)
         {
 
-            return View();
+            deviceDetail devD = new deviceDetail();
+            devD.sheet = new List<Sheet1_>();
+
+            devD.detailS = new Sheet1_();
+            devD.detailD = new DEVICE();
+            var dev = _data.Sheet1_s.ToList();
+
+            foreach (var i in dev)
+            {
+                if (i.MaDev == id)
+                {
+                    //
+                    devD.sheet.Add(i);
+                }
+            }
+
+            devD.detailD = _data.DEVICEs.SingleOrDefault(n => n.MaDevice == id);
+            var temp = _data.Sheet1_s.ToList();
+
+            foreach (var i in temp)
+            {
+                if (i.MaDev == id)
+                {
+                    devD.detailS = i;
+                    break;
+                }
+            }
+
+
+            if (devD == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            return View(devD);
         }
         
         public ActionResult contact()

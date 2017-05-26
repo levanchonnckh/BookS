@@ -1,0 +1,101 @@
+﻿@model BookS.Areas.admin.Models.deviceDetail
+@{
+    ViewBag.Title = "ChitietSP1";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div class="container">
+    <div style="text-align:center">
+        <h3>@Model.detailD.TenDevice</h3>
+    </div>
+    <hr />
+    <div id="left" class="col-md-8">
+        <h3>Thông tin chi tiết</h3>
+        <div class="col-md-4">
+            <img src="~/image/DEVICE/@Model.detailD.AnhBia" style="width:100%" />
+        </div>
+        <div class="col-md-8">
+            <table class="table-bordered col-md-12">
+                <tr>
+                    <td>Tên thiết bị</td>
+                    <td>@Model.detailD.TenDevice</td>
+                </tr>
+                <tr>
+                    <td>Danh mục</td>
+                    <td>@Model.detailD.CHU_DE.TenChuDe</td>
+                </tr>
+                <tr>
+                    <td>Giá bán</td>
+                    <td>@Model.detailD.GiaBan</td>
+                </tr>
+                <tr>
+                    <td>Nhà sản xuất</td>
+                    <td>@Model.detailD.NHA_SAN_XUAT.TenNSX</td>
+                </tr>
+            </table>
+            <div class="col-md-12">
+                <hr />
+                <p>@Model.detailD.MoTa</p>
+            </div>
+            <div class="col-md-12">
+                <hr />
+                <h2 style="color:red">Giá bán: @Model.detailD.GiaBan $</h2>
+                <button class="btn btn-primary">Add to cart</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="right" class="col-md-4">
+
+        <h3>Thông số kỹ thuật</h3>
+
+
+        <table class="table-bordered">
+            <tbody>
+
+                <tr>
+                    <td class="col-md-6">Màn hình</td>
+                    <td class="col-md-6">@Model.detailS.ManHinh</td>
+                </tr>
+                <tr>
+                    <td class="col-md-6">CPU</td>
+                    <td class="col-md-6">@Model.detailS.CPU</td>
+                </tr>
+                <tr>
+                    <td class="col-md-6">RAM</td>
+                    <td class="col-md-6">@Model.detailS.RAM</td>
+                </tr>
+                <tr>
+                    <td class="col-md-6">Hệ điều hành</td>
+                    <td class="col-md-6">@Model.detailS.HeDieuHanh</td>
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+        <table class="table-bordered col-md-12">
+
+            @foreach (var i in Model.sheet)
+            {
+
+
+                <tr>
+
+                    <td style="background-color:@i.MauSac" class="col-md-3"></td>
+                    <td class="col-md-6">@i.BoNhoTrong</td>
+                </tr>
+            }
+        </table>
+    </div>
+
+    <hr />
+</div>
+
+
+
+
+

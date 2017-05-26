@@ -1,19 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="eshop" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-585O54I;Initial Catalog=eshop;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="eshopConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Sheet1$" Member="Sheet1_s">
+    <Type Name="Sheet1_">
+      <Column Name="MaDev" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaChiTiet" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ManHinh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeDieuHanh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CPU" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="RAM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BoNhoTrong" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MauSac" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="[Gia ]" Member="Gia_" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="DEVICE_Sheet1_" Member="DEVICE" ThisKey="MaDev" OtherKey="MaDevice" Type="DEVICE" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.ADMIN" Member="ADMINs">
     <Type Name="ADMIN">
       <Column Name="USER_ADMIN" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="PASSWORD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="HO_TEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TIN_TUC" Member="TIN_TUCs">
-    <Type Name="TIN_TUC">
-      <Column Name="MaTin" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NoiDung" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MoTa" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="Bia" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="NguoiDang" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHI_TIET" Member="CHI_TIETs">
@@ -22,6 +27,7 @@
       <Column Name="MaDev" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DacDiem" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IMG" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="DEVICE_CHI_TIET" Member="DEVICE" ThisKey="MaDev" OtherKey="MaDevice" Type="DEVICE" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHU_DE" Member="CHU_DEs">
@@ -52,7 +58,10 @@
       <Column Name="SoLuongTon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaNSX" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DEVICE_Sheet1_" Member="Sheet1_s" ThisKey="MaDevice" OtherKey="MaDev" Type="Sheet1_" />
+      <Association Name="DEVICE_CHI_TIET" Member="CHI_TIETs" ThisKey="MaDevice" OtherKey="MaDev" Type="CHI_TIET" />
       <Association Name="DEVICE_CT_DON_HANG" Member="CT_DON_HANGs" ThisKey="MaDevice" OtherKey="MaDevice" Type="CT_DON_HANG" />
+      <Association Name="DEVICE_ICON" Member="ICONs" ThisKey="MaDevice" OtherKey="MaSp" Type="ICON" />
       <Association Name="CHU_DE_DEVICE" Member="CHU_DE" ThisKey="MaCD" OtherKey="MaCD" Type="CHU_DE" IsForeignKey="true" />
       <Association Name="NHA_SAN_XUAT_DEVICE" Member="NHA_SAN_XUAT" ThisKey="MaNSX" OtherKey="MaNSX" Type="NHA_SAN_XUAT" IsForeignKey="true" />
     </Type>
@@ -68,6 +77,15 @@
       <Association Name="CT_DON_HANG_DON_DAT_HANG" Member="CT_DON_HANG" ThisKey="MaDH" OtherKey="MaDH" Type="CT_DON_HANG" IsForeignKey="true" />
       <Association Name="KHACH_HANG_DON_DAT_HANG" Member="KHACH_HANG" ThisKey="MaKH" OtherKey="MaKH" Type="KHACH_HANG" IsForeignKey="true" />
       <Association Name="KHACH_HANG_DON_DAT_HANG1" Member="KHACH_HANG1" ThisKey="MaKH" OtherKey="MaKH" Type="KHACH_HANG" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ICON" Member="ICONs">
+    <Type Name="ICON">
+      <Column Name="MaSp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IMG_ICON" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MaCD" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DEVICE_ICON" Member="DEVICE" ThisKey="MaSp" OtherKey="MaDevice" Type="DEVICE" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.KHACH_HANG" Member="KHACH_HANGs">
@@ -89,14 +107,6 @@
       <Column Name="MaNSX" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TenNSX" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Association Name="NHA_SAN_XUAT_DEVICE" Member="DEVICEs" ThisKey="MaNSX" OtherKey="MaNSX" Type="DEVICE" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ICON" Member="ICONs">
-    <Type Name="ICON">
-      <Column Name="MaSp" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="IMG_ICON" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="MaCD" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

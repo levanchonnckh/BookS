@@ -9,6 +9,7 @@ namespace BookS.Models
     {
         public List<DEVICE> device { get; set; }
         public List<ICON> icon { get; set; }
+        public Sheet1_ detailS { set; get; }
 
     }
 }

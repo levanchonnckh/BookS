@@ -33,9 +33,6 @@ namespace BookS.Models
     partial void InsertADMIN(ADMIN instance);
     partial void UpdateADMIN(ADMIN instance);
     partial void DeleteADMIN(ADMIN instance);
-    partial void InsertTIN_TUC(TIN_TUC instance);
-    partial void UpdateTIN_TUC(TIN_TUC instance);
-    partial void DeleteTIN_TUC(TIN_TUC instance);
     partial void InsertCHI_TIET(CHI_TIET instance);
     partial void UpdateCHI_TIET(CHI_TIET instance);
     partial void DeleteCHI_TIET(CHI_TIET instance);
@@ -89,19 +86,19 @@ namespace BookS.Models
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Sheet1_> Sheet1_s
+		{
+			get
+			{
+				return this.GetTable<Sheet1_>();
+			}
+		}
+		
 		public System.Data.Linq.Table<ADMIN> ADMINs
 		{
 			get
 			{
 				return this.GetTable<ADMIN>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TIN_TUC> TIN_TUCs
-		{
-			get
-			{
-				return this.GetTable<TIN_TUC>();
 			}
 		}
 		
@@ -145,6 +142,14 @@ namespace BookS.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<ICON> ICONs
+		{
+			get
+			{
+				return this.GetTable<ICON>();
+			}
+		}
+		
 		public System.Data.Linq.Table<KHACH_HANG> KHACH_HANGs
 		{
 			get
@@ -160,12 +165,175 @@ namespace BookS.Models
 				return this.GetTable<NHA_SAN_XUAT>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Sheet1$")]
+	public partial class Sheet1_
+	{
 		
-		public System.Data.Linq.Table<ICON> ICONs
+		private System.Nullable<int> _MaDev;
+		
+		private string _MaChiTiet;
+		
+		private string _ManHinh;
+		
+		private string _HeDieuHanh;
+		
+		private string _CPU;
+		
+		private string _RAM;
+		
+		private string _BoNhoTrong;
+		
+		private string _MauSac;
+		
+		private System.Nullable<double> _Gia_;
+		
+		public Sheet1_()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDev", DbType="Int")]
+		public System.Nullable<int> MaDev
 		{
 			get
 			{
-				return this.GetTable<ICON>();
+				return this._MaDev;
+			}
+			set
+			{
+				if ((this._MaDev != value))
+				{
+					this._MaDev = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaChiTiet", DbType="NVarChar(255)")]
+		public string MaChiTiet
+		{
+			get
+			{
+				return this._MaChiTiet;
+			}
+			set
+			{
+				if ((this._MaChiTiet != value))
+				{
+					this._MaChiTiet = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ManHinh", DbType="NVarChar(255)")]
+		public string ManHinh
+		{
+			get
+			{
+				return this._ManHinh;
+			}
+			set
+			{
+				if ((this._ManHinh != value))
+				{
+					this._ManHinh = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeDieuHanh", DbType="NVarChar(255)")]
+		public string HeDieuHanh
+		{
+			get
+			{
+				return this._HeDieuHanh;
+			}
+			set
+			{
+				if ((this._HeDieuHanh != value))
+				{
+					this._HeDieuHanh = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPU", DbType="NVarChar(255)")]
+		public string CPU
+		{
+			get
+			{
+				return this._CPU;
+			}
+			set
+			{
+				if ((this._CPU != value))
+				{
+					this._CPU = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RAM", DbType="NVarChar(255)")]
+		public string RAM
+		{
+			get
+			{
+				return this._RAM;
+			}
+			set
+			{
+				if ((this._RAM != value))
+				{
+					this._RAM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BoNhoTrong", DbType="NVarChar(255)")]
+		public string BoNhoTrong
+		{
+			get
+			{
+				return this._BoNhoTrong;
+			}
+			set
+			{
+				if ((this._BoNhoTrong != value))
+				{
+					this._BoNhoTrong = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MauSac", DbType="NVarChar(255)")]
+		public string MauSac
+		{
+			get
+			{
+				return this._MauSac;
+			}
+			set
+			{
+				if ((this._MauSac != value))
+				{
+					this._MauSac = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Gia ]", Storage="_Gia_", DbType="Float")]
+		public System.Nullable<double> Gia_
+		{
+			get
+			{
+				return this._Gia_;
+			}
+			set
+			{
+				if ((this._Gia_ != value))
+				{
+					this._Gia_ = value;
+				}
 			}
 		}
 	}
@@ -280,164 +448,6 @@ namespace BookS.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TIN_TUC")]
-	public partial class TIN_TUC : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MaTin;
-		
-		private string _NoiDung;
-		
-		private string _MoTa;
-		
-		private string _Bia;
-		
-		private string _NguoiDang;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMaTinChanging(int value);
-    partial void OnMaTinChanged();
-    partial void OnNoiDungChanging(string value);
-    partial void OnNoiDungChanged();
-    partial void OnMoTaChanging(string value);
-    partial void OnMoTaChanged();
-    partial void OnBiaChanging(string value);
-    partial void OnBiaChanged();
-    partial void OnNguoiDangChanging(string value);
-    partial void OnNguoiDangChanged();
-    #endregion
-		
-		public TIN_TUC()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTin", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MaTin
-		{
-			get
-			{
-				return this._MaTin;
-			}
-			set
-			{
-				if ((this._MaTin != value))
-				{
-					this.OnMaTinChanging(value);
-					this.SendPropertyChanging();
-					this._MaTin = value;
-					this.SendPropertyChanged("MaTin");
-					this.OnMaTinChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoiDung", DbType="NChar(10)")]
-		public string NoiDung
-		{
-			get
-			{
-				return this._NoiDung;
-			}
-			set
-			{
-				if ((this._NoiDung != value))
-				{
-					this.OnNoiDungChanging(value);
-					this.SendPropertyChanging();
-					this._NoiDung = value;
-					this.SendPropertyChanged("NoiDung");
-					this.OnNoiDungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoTa", DbType="NChar(10)")]
-		public string MoTa
-		{
-			get
-			{
-				return this._MoTa;
-			}
-			set
-			{
-				if ((this._MoTa != value))
-				{
-					this.OnMoTaChanging(value);
-					this.SendPropertyChanging();
-					this._MoTa = value;
-					this.SendPropertyChanged("MoTa");
-					this.OnMoTaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bia", DbType="NChar(10)")]
-		public string Bia
-		{
-			get
-			{
-				return this._Bia;
-			}
-			set
-			{
-				if ((this._Bia != value))
-				{
-					this.OnBiaChanging(value);
-					this.SendPropertyChanging();
-					this._Bia = value;
-					this.SendPropertyChanged("Bia");
-					this.OnBiaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NguoiDang", DbType="NChar(10)")]
-		public string NguoiDang
-		{
-			get
-			{
-				return this._NguoiDang;
-			}
-			set
-			{
-				if ((this._NguoiDang != value))
-				{
-					this.OnNguoiDangChanging(value);
-					this.SendPropertyChanging();
-					this._NguoiDang = value;
-					this.SendPropertyChanged("NguoiDang");
-					this.OnNguoiDangChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHI_TIET")]
 	public partial class CHI_TIET : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -451,6 +461,8 @@ namespace BookS.Models
 		private string _DacDiem;
 		
 		private string _IMG;
+		
+		private EntityRef<DEVICE> _DEVICE;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -468,6 +480,7 @@ namespace BookS.Models
 		
 		public CHI_TIET()
 		{
+			this._DEVICE = default(EntityRef<DEVICE>);
 			OnCreated();
 		}
 		
@@ -502,6 +515,10 @@ namespace BookS.Models
 			{
 				if ((this._MaDev != value))
 				{
+					if (this._DEVICE.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaDevChanging(value);
 					this.SendPropertyChanging();
 					this._MaDev = value;
@@ -547,6 +564,40 @@ namespace BookS.Models
 					this._IMG = value;
 					this.SendPropertyChanged("IMG");
 					this.OnIMGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DEVICE_CHI_TIET", Storage="_DEVICE", ThisKey="MaDev", OtherKey="MaDevice", IsForeignKey=true)]
+		public DEVICE DEVICE
+		{
+			get
+			{
+				return this._DEVICE.Entity;
+			}
+			set
+			{
+				DEVICE previousValue = this._DEVICE.Entity;
+				if (((previousValue != value) 
+							|| (this._DEVICE.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DEVICE.Entity = null;
+						previousValue.CHI_TIETs.Remove(this);
+					}
+					this._DEVICE.Entity = value;
+					if ((value != null))
+					{
+						value.CHI_TIETs.Add(this);
+						this._MaDev = value.MaDevice;
+					}
+					else
+					{
+						this._MaDev = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("DEVICE");
 				}
 			}
 		}
@@ -913,6 +964,8 @@ namespace BookS.Models
 		
 		private System.Nullable<int> _MaNSX;
 		
+		private EntitySet<CHI_TIET> _CHI_TIETs;
+		
 		private EntitySet<CT_DON_HANG> _CT_DON_HANGs;
 		
 		private EntityRef<CHU_DE> _CHU_DE;
@@ -945,6 +998,7 @@ namespace BookS.Models
 		
 		public DEVICE()
 		{
+			this._CHI_TIETs = new EntitySet<CHI_TIET>(new Action<CHI_TIET>(this.attach_CHI_TIETs), new Action<CHI_TIET>(this.detach_CHI_TIETs));
 			this._CT_DON_HANGs = new EntitySet<CT_DON_HANG>(new Action<CT_DON_HANG>(this.attach_CT_DON_HANGs), new Action<CT_DON_HANG>(this.detach_CT_DON_HANGs));
 			this._CHU_DE = default(EntityRef<CHU_DE>);
 			this._NHA_SAN_XUAT = default(EntityRef<NHA_SAN_XUAT>);
@@ -1139,6 +1193,19 @@ namespace BookS.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DEVICE_CHI_TIET", Storage="_CHI_TIETs", ThisKey="MaDevice", OtherKey="MaDev")]
+		public EntitySet<CHI_TIET> CHI_TIETs
+		{
+			get
+			{
+				return this._CHI_TIETs;
+			}
+			set
+			{
+				this._CHI_TIETs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DEVICE_CT_DON_HANG", Storage="_CT_DON_HANGs", ThisKey="MaDevice", OtherKey="MaDevice")]
 		public EntitySet<CT_DON_HANG> CT_DON_HANGs
 		{
@@ -1238,6 +1305,18 @@ namespace BookS.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_CHI_TIETs(CHI_TIET entity)
+		{
+			this.SendPropertyChanging();
+			entity.DEVICE = this;
+		}
+		
+		private void detach_CHI_TIETs(CHI_TIET entity)
+		{
+			this.SendPropertyChanging();
+			entity.DEVICE = null;
 		}
 		
 		private void attach_CT_DON_HANGs(CT_DON_HANG entity)
@@ -1550,6 +1629,87 @@ namespace BookS.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ICON")]
+	public partial class ICON
+	{
+		
+		private System.Nullable<int> _MaSp;
+		
+		private string _IMG_ICON;
+		
+		private string _MaCD;
+		
+		private string _Name;
+		
+		public ICON()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSp", DbType="Int")]
+		public System.Nullable<int> MaSp
+		{
+			get
+			{
+				return this._MaSp;
+			}
+			set
+			{
+				if ((this._MaSp != value))
+				{
+					this._MaSp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IMG_ICON", DbType="NChar(10)")]
+		public string IMG_ICON
+		{
+			get
+			{
+				return this._IMG_ICON;
+			}
+			set
+			{
+				if ((this._IMG_ICON != value))
+				{
+					this._IMG_ICON = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", DbType="NChar(10)")]
+		public string MaCD
+		{
+			get
+			{
+				return this._MaCD;
+			}
+			set
+			{
+				if ((this._MaCD != value))
+				{
+					this._MaCD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
 			}
 		}
 	}
@@ -1951,87 +2111,6 @@ namespace BookS.Models
 		{
 			this.SendPropertyChanging();
 			entity.NHA_SAN_XUAT = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ICON")]
-	public partial class ICON
-	{
-		
-		private string _MaSp;
-		
-		private string _IMG_ICON;
-		
-		private string _MaCD;
-		
-		private string _Name;
-		
-		public ICON()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaSp", DbType="NChar(10)")]
-		public string MaSp
-		{
-			get
-			{
-				return this._MaSp;
-			}
-			set
-			{
-				if ((this._MaSp != value))
-				{
-					this._MaSp = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IMG_ICON", DbType="NChar(10)")]
-		public string IMG_ICON
-		{
-			get
-			{
-				return this._IMG_ICON;
-			}
-			set
-			{
-				if ((this._IMG_ICON != value))
-				{
-					this._IMG_ICON = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaCD", DbType="NChar(10)")]
-		public string MaCD
-		{
-			get
-			{
-				return this._MaCD;
-			}
-			set
-			{
-				if ((this._MaCD != value))
-				{
-					this._MaCD = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
 		}
 	}
 }

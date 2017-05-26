@@ -71,24 +71,24 @@ namespace BookS.Controllers
             }
             return this.Dangky();
         }
-        
-
         [HttpGet]
         public ActionResult Dangnhap()
         {
             return View();
         }
+        
         //
+        [HttpPost]
         public ActionResult Dangnhap(FormCollection collection)
         {
             var tendn = collection["TenDN"];
             var matkhau = collection["Matkhau"];
             if (String.IsNullOrEmpty(tendn))
             {
-                ViewData["Loi1"] = "Phải nhập tên đăng nhập!";
+                ViewData["Loi1.1"] = "Phải nhập tên đăng nhập!";
             }else if (String.IsNullOrEmpty(matkhau))
             {
-                ViewData["Loi2"] = "Phải nhập mật khẩu!";
+                ViewData["Loi2.1"] = "Phải nhập mật khẩu!";
             }
             else
             {
@@ -103,7 +103,7 @@ namespace BookS.Controllers
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 }
             }
-            return View();
+            return RedirectToAction("Dangky");
         }
     }
 

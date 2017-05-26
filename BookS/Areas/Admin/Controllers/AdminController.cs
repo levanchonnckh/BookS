@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BookS.Models;
 using PagedList;
 using System.IO;
+using BookS.Areas.admin.Models;
 
 namespace BookS.Areas.admin.Controllers
 {
@@ -116,5 +117,120 @@ namespace BookS.Areas.admin.Controllers
 
            
         }
+
+        
+
+        public ActionResult Detail(int id)
+        {
+            deviceDetail devD = new deviceDetail();
+            devD.sheet = new List<Sheet1_>();
+            
+            devD.detailS = new Sheet1_();
+            devD.detailD = new DEVICE();
+            //get color
+            var dev = db.Sheet1_s.ToList();
+            foreach(var i in dev)
+            {
+                if (i.MaDev == id)
+                {
+                    //
+                    devD.sheet.Add(i);
+                }
+            }
+
+           
+
+            devD.detailD = db.DEVICEs.SingleOrDefault(n=>n.MaDevice == id);
+            var temp = db.Sheet1_s.ToList();
+
+            foreach(var i in temp)
+            {
+                if (i.MaDev == id)
+                {
+                    devD.detailS = i;
+                    break;
+                }
+            }
+
+
+            if (devD == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            return View(devD);
+        }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            DEVICE dev = db.DEVICEs.SingleOrDefault(n => n.MaDevice == id);
+            if (dev == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            db.DEVICEs.DeleteOnSubmit(dev);
+            db.SubmitChanges();
+            return RedirectToAction("device");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            DEVICE dev = db.DEVICEs.SingleOrDefault(n => n.MaDevice == id);
+            if (dev == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            ViewBag.MaCD = new SelectList(db.CHU_DEs.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChuDe");
+            ViewBag.MaNSX = new SelectList(db.NHA_SAN_XUATs.ToList().OrderBy(n => n.TenNSX), "MaNSX", "TenNSX");
+            return View(dev);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult Edit(DEVICE dev, HttpPostedFileBase fileUpload)
+        {
+
+            ViewBag.MaCD = new SelectList(db.CHU_DEs.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChuDe");
+            ViewBag.MaNSX = new SelectList(db.NHA_SAN_XUATs.ToList().OrderBy(n => n.TenNSX), "MaNSX", "TenNSX");
+
+            if (fileUpload == null)
+            {
+                ViewBag.thongbao = "vui lòng chọn hình ảnh";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //luu ten file
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    //luu duong dan file
+                    var path = Path.Combine(Server.MapPath("~/image/DEVICE"), fileName);
+                    //kiem tra file ton tai chu
+                    if (System.IO.File.Exists(path))
+                    {
+                        ViewBag.thongbao = "hình ảnh đã tồn tại";
+                    }
+                    else
+                    {
+                        fileUpload.SaveAs(path);
+                    }
+
+                    dev.AnhBia = fileName;
+                    UpdateModel(dev);
+                    db.SubmitChanges();
+                }
+
+                return View("device");
+            }
+
+
+
+        }
+
+
     }
 }

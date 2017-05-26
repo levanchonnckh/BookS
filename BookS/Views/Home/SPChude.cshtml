@@ -22,10 +22,8 @@
                             @if(Int32.Parse(@i.MaCD)==5){
                                 <span style="font-size:12px; display:block">@i.Name</span>
                             }else{
-                                <span>@i.Name</span>
-                                
-                            }
-                            
+                                <span>@i.Name</span>                      
+                            }                   
                         </a>
                     </li>
                 }
@@ -49,19 +47,16 @@
                 <div>
                     <h4>@i.TenDevice</h4>
                     <h4 style="color:red">@(@Int32.Parse(@i.GiaBan)*22000) VND</h4>
-                    <a href="@Url.Action("GioHang","Giohang")">Buy</a>
-
+                    @Html.ActionLink("Learn More", "ChitietSP1",new {id = @i.MaDevice})
                     
-
-
-
-
                 </div>
             </div>
         }
 
     }
 </div>
+
+
 
 
 
