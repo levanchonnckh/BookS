@@ -1,76 +1,53 @@
-﻿
+﻿@using BookS.Models
+@model List<Giohang>
+
 @{
-    ViewBag.Title = "checkOut";
+    ViewBag.Title = "Đơn đặt hàng";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-
 <div>
 
 </div>
 <div id="contai" class="row">
     <h3>information deliver</h3>
-    <div class="col-md-10" style="margin-top:100px;">
-        <div id="left" class="col-md-2 col-md-offset-2">
-            <img src="https://dummyimage.com/400x400/000/fff" style="width:70%" />
-        </div>
-        <div id="containerRight">
-            <div class="col-md-4" id="left">
-                <h4>12-inch MacBook 256GB - Silver </h4>
-                <h3>1,299.00$</h3>
-            </div>
-            <div class="col-md-4" id="right">
-                <ul>
-                    <li>
-                        1.1GHz dual-core Intel Core m3, Turbo Boost up to 2.2GHz
-                    </li>
-                    <li>
-                        8GB 1866MHz LPDDR3 SDRAM
-                    </li>
-                    <li>
-                        256GB PCIe-based onboard flash storage
-                    </li>
-                    <li>
-                        Intel HD Graphics 515
-                    </li>
-                    <li>
-                        Backlit Keyboard (English) & User's Guide
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-10" style="margin-top:100px;">
-        <div id="left" class="col-md-2 col-md-offset-2">
-            <img src="https://dummyimage.com/400x400/000/fff" style="width:70%" />
-        </div>
-        <div id="containerRight">
-            <div class="col-md-4" id="left">
-                <h4>12-inch MacBook 256GB - Silver </h4>
-                <h3>1,299.00$</h3>
-            </div>
-            <div class="col-md-4" id="right">
-                <ul>
-                    <li>
-                        1.1GHz dual-core Intel Core m3, Turbo Boost up to 2.2GHz
-                    </li>
-                    <li>
-                        8GB 1866MHz LPDDR3 SDRAM
-                    </li>
-                    <li>
-                        256GB PCIe-based onboard flash storage
-                    </li>
-                    <li>
-                        Intel HD Graphics 515
-                    </li>
-                    <li>
-                        Backlit Keyboard (English) & User's Guide
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
     
-    
+    @foreach (var i in Model)
+    {
+        <div class="col-md-10" style="margin-top:100px;">
+            <div id="left" class="col-md-2 col-md-offset-2">
+                <img src="~/image/DEVICE/@i.sAnhbia" style="width:50%;height:50%" />
+            </div>
+            <div id="containerRight">
+                <div class="col-md-4" id="left">
+                    <h4>@i.sTensach </h4>
+                    <h3>@String.Format("{0:0,0}", @i.dDongia * 22000) VND</h3>
+                    <h3>@i.iSoluong</h3>
+                    <h3>@String.Format("{0:0,0}", @i.dThanhtien) VND</h3>
+                </div>
+                <div class="col-md-4" id="right">
+                    <ul>
+                        <li>
+                            1.1GHz dual-core Intel Core m3, Turbo Boost up to 2.2GHz
+                        </li>
+                        <li>
+                            8GB 1866MHz LPDDR3 SDRAM
+                        </li>
+                        <li>
+                            256GB PCIe-based onboard flash storage
+                        </li>
+                        <li>
+                            Intel HD Graphics 515
+                        </li>
+                        <li>
+                            Backlit Keyboard (English) & User's Guide
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+
+
 </div>
 
 <div id="contai" class="row">

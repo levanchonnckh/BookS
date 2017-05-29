@@ -10,78 +10,60 @@
         <h3>Giao hàng miễn phí</h3>
     </div>
 
-    <div class="col-md-10 col-md-offset-1" style="margin-top:50px;">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>image</th>
-                    <th>information</th>
-                    <th>price</th>
-                    <th>price</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="col-md-2">
-                        <img src="https://dummyimage.com/400x400/000/fff" style="width:70%"/>
-                    </td>
-                    <td class="col-md-4">
-                        <ul>
-                            <li>2.0GHz dual-core Intel Core i5 processor, Turbo Boost up to 3.1GHz</li>
-                            <li>8GB 1866MHz memory</li>
-                            <li>256GB PCIe-based SSD</li>
-                            <li>Intel Iris Graphics 540</li>
-                            <li>Two Thunderbolt 3 ports</li>
-                            <li>Force Touch trackpad</li>
+@if (Model != null)
+{
+    <div class="container">
+        <table class="col-md-12 table-bordered">
 
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-md-1">@item.chitiet.MaChiTiet</td>
+                    <td class="col-md-1">@item.sTensach</td>
+                    <td class="col-md-2"><img src="~/image/DEVICE/@item.sAnhbia" style="width:100%" /></td>
+                    <td class="col-md-3">
+                        <ul>
+                            <li>@item.chitiet.BoNhoTrong</li>
+                            <li>@item.chitiet.CPU</li>
+                            <li>@item.chitiet.RAM</li>
+                            <li>@item.chitiet.HeDieuHanh</li>
+                            <li>@item.chitiet.ManHinh</li>
+                            <li style="background-color:@item.chitiet.MauSac"></li>
                         </ul>
                     </td>
-                    <td>
-                        $1,299.00
-                    </td>
-                    <td>
-                        <input type="number" value="1"/>
-                    </td>
-                    <td>
-                        <h4> $1,299.00</h4>
-                    </td>
-                    <td><button type="button" class="btn btn-danger">delete</button></td>
-                </tr>
-                <tr>
-                    <td class="col-md-2">
-                        <img src="https://dummyimage.com/400x400/000/fff" style="width:70%" />
-                    </td>
-                    <td class="col-md-4">
-                        <ul>
-                            <li>2.0GHz dual-core Intel Core i5 processor, Turbo Boost up to 3.1GHz</li>
-                            <li>8GB 1866MHz memory</li>
-                            <li>256GB PCIe-based SSD</li>
-                            <li>Intel Iris Graphics 540</li>
-                            <li>Two Thunderbolt 3 ports</li>
-                            <li>Force Touch trackpad</li>
+                    @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { iMasp = @item.chitiet.MaChiTiet }))
+                    {
+                        <td class="col-md-1">
+                            <input type="number" min="1" name="txtSoluong" value="@item.iSoluong" style="width:70%" class="input-group-sm" />
+                        </td>
+                        <td class="col-md-1">@String.Format("{0:0,0}", @Int32.Parse((@item.dDongia * 22000).ToString()))</td>
+                        <td class="col-md-1">@String.Format("{0:0,0}", @item.dThanhtien)</td>
+                        <td class="col-md-1"><a href="@Url.Action("ChitietSP1","Home",new { id = @item.iMasach})">Chi tiết</a></td>
+                        <td class="col-md-1">@Html.ActionLink("Xóa", "XoaGiohang", new { iMasp = @item.chitiet.MaChiTiet })</td>
 
-                        </ul>
-                    </td>
-                    <td>
-                        $1,299.00
-                    </td>
-                    <td>
-                        <input type="number" value="1" />
-                    </td>
-                    <td>
-                        <h4> $1,299.00</h4>
-                    </td>
-                    <td><button type="button" class="btn btn-danger">delete</button></td>
+                        <td class="col-md-1"><input type="submit" value="cập nhật" class="btn btn-success" /></td>
+                    }
+
                 </tr>
-            </tbody>
+            }
+
         </table>
-    </div>
 
-    <div class="col-md-10 col-md-offset-1" style="height:100px;text-align:center">
-        
-        <a href="@Url.Action("thongTinGiaoHang","Giohang")">tiep yuc</a>
     </div>
+    <div class="container">
+        <h4 colspan="3"> Số lượng: @ViewBag.Tongsoluong</h4>
+        <h4 colspan="3"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VND</h4>
+        @Html.ActionLink("Xóa giỏ hàng", "XoaAll") |
+        @Html.ActionLink("Đặt hàng", "Dathang", "Giohang")
+    </div>
+}else
+{
+    <div>
+        empty
+    </div>
+}
+
+
+
 
 

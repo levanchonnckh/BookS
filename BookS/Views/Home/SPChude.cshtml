@@ -46,7 +46,7 @@
                 </div>
                 <div>
                     <h4>@i.TenDevice</h4>
-                    <h4 style="color:red">@(@Int32.Parse(@i.GiaBan)*22000) VND</h4>
+                    <h4 style="color:red">@String.Format("{0:0,0}", @Int32.Parse(@i.GiaBan) * 22000) VND</h4>
                     @Html.ActionLink("Learn More", "ChitietSP1",new {id = @i.MaDevice})
                     
                 </div>

@@ -5,72 +5,14 @@
 }
 <div class="row">
     <div class="col-md-10 col-md-offset-1" style="height:500px;">
-        <div id="left" class="col-md-6" style="height:500px;">
+        <div id="left" class="col-md-6">
             <div>
-                <h3>Login</h3>
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                        <div class="col-sm-7">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Remember me
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                        </div>
-                    </div>
-                </form>
+                @Html.Action("Dangnhap", "NguoiDung")
+               
             </div>
 
             <div style="padding-bottom:20px">
-                <h3>Sign in</h3>
-                <form class="form-horizontal" style="margin-top:30px">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </form>
+                @Html.Action("Dangky", "NguoiDung")
         </div>
             
         </div>
@@ -78,6 +20,7 @@
         <div id="right" class="col-md-6" style="height:500px;">
             <div style="margin-top:20px">
                <div style="margin-top:230px;">
+                   <h3>@Html.ActionLink("tro ve gio hang","GioHang","Giohang")</h3>
                    <h3>Guest Checkout</h3>
                    <h4>Proceed to checkout, and you can create an Apple ID at the end.</h4>
                    <div class="form-group">

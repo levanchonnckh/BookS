@@ -10,8 +10,6 @@ namespace BookS.Areas.admin.Models
     public class deviceDetail
     {
         public List<Sheet1_> sheet { get; set; }
-       
-
         public Sheet1_ detailS { get; set; }
         public DEVICE detailD { get; set; }
         

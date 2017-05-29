@@ -17,10 +17,16 @@ namespace BookS.Controllers
             return View();
         }
 
+        public ActionResult login()
+        {
+            return View();
+        }
+
+
         [HttpGet]
         public ActionResult Dangky()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -69,7 +75,7 @@ namespace BookS.Controllers
                 db.SubmitChanges();
                 return RedirectToAction("Dangnhap");                
             }
-            return this.Dangky();
+            return PartialView();
         }
         [HttpGet]
         public ActionResult Dangnhap()
@@ -77,6 +83,10 @@ namespace BookS.Controllers
             return View();
         }
         
+        public ActionResult loginP()
+        {
+            return PartialView();
+        }
         //
         [HttpPost]
         public ActionResult Dangnhap(FormCollection collection)
@@ -86,13 +96,15 @@ namespace BookS.Controllers
             if (String.IsNullOrEmpty(tendn))
             {
                 ViewData["Loi1.1"] = "Phải nhập tên đăng nhập!";
-            }else if (String.IsNullOrEmpty(matkhau))
+                Response.Write("<script>alert('Phải nhập tên đăng nhập!');</script>");
+            }
+            else if (String.IsNullOrEmpty(matkhau))
             {
                 ViewData["Loi2.1"] = "Phải nhập mật khẩu!";
             }
             else
             {
-                KHACH_HANG kh = db.KHACH_HANGs.SingleOrDefault(n => n.TaiKhoan == tendn && n.MatKhau == matkhau);
+                KHACH_HANG kh = db.KHACH_HANGs.SingleOrDefault(n => n.Email == tendn && n.MatKhau == matkhau);
                 if (kh != null)
                 {
                     ViewBag.Thongbao = "Chúc mừng đăng nhập thành công!";
@@ -103,7 +115,7 @@ namespace BookS.Controllers
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng!";
                 }
             }
-            return RedirectToAction("Dangky");
+            return RedirectToAction("login");
         }
     }
 
