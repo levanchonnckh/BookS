@@ -2,45 +2,44 @@
 @model List<Giohang>
 
 @{
-    ViewBag.Title = "Đơn đặt hàng";
+    ViewBag.Title = "Đơn đặt hàng guest";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
-<div>
 
-</div>
-<div id="contai" class="row">
+<div id="contai" class="row container">
     <h3>information deliver</h3>
-    
+
     @foreach (var i in Model)
     {
         <div class="col-md-10" style="margin-top:100px;">
             <div id="left" class="col-md-2 col-md-offset-2">
-                <img src="~/image/DEVICE/@i.sAnhbia" style="width:50%;height:50%" />
+                <img src="~/image/DEVICE/@i.sAnhbia" style="width:100%;" />
             </div>
             <div id="containerRight">
                 <div class="col-md-4" id="left">
                     <h4>@i.sTensach </h4>
-                    <h3>@String.Format("{0:0,0}", @i.dDongia * 22000) VND</h3>
-                    <h3>@i.iSoluong</h3>
-                    <h3>@String.Format("{0:0,0}", @i.dThanhtien) VND</h3>
+                    <h4>@String.Format("{0:0,0}", @i.dDongia * 22000) VND</h4>
+                    <h4>@i.iSoluong</h4>
+                    <h4>@String.Format("{0:0,0}", @i.dThanhtien) VND</h4>
                 </div>
                 <div class="col-md-4" id="right">
                     <ul>
                         <li>
-                            1.1GHz dual-core Intel Core m3, Turbo Boost up to 2.2GHz
+                            @i.chitiet.CPU
                         </li>
                         <li>
-                            8GB 1866MHz LPDDR3 SDRAM
+                            @i.chitiet.RAM
                         </li>
                         <li>
-                            256GB PCIe-based onboard flash storage
+                            @i.chitiet.BoNhoTrong
                         </li>
                         <li>
-                            Intel HD Graphics 515
+                            @i.chitiet.HeDieuHanh
                         </li>
                         <li>
-                            Backlit Keyboard (English) & User's Guide
+                            @i.chitiet.ManHinh
                         </li>
+                        <li style="background-color:@i.chitiet.MauSac"></li>
                     </ul>
                 </div>
             </div>
@@ -50,52 +49,73 @@
 
 </div>
 
-<div id="contai" class="row">
-    <div class="col-md-5 col-md-offset-2">
+<div>
+    <div class="col-md-5 col-md-offset-4" style="text-align:center;margin-top:40px">
+        <h4 colspan="3" style="color:red"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VND</h4>
+        <hr />
         <h3>Shipping Address</h3>
-        <form class="form-horizontal" style="margin-top:30px">
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
-                <div class="col-sm-7">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal" style="margin-top:30px">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputEmail3" name="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputEmail3" name="phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" id="inputEmail3" name="address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-7">
+                        <input type="email" class="form-control" id="inputEmail3" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Ngày giao</label>
+                    <div class="col-sm-7">
+                        <input type="date" class="form-control" id="inputEmail3" name="Ngaygiao">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Đồng ý đặt hàng</button>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Phone</label>
-                <div class="col-sm-7">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
-                <div class="col-sm-7">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-7">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
+        }
+
+
+
+
+
+
+
     </div>
-    
+
 </div>
 
 <style>
-    #contai{
-        text-align:center;
+    #contai {
+        text-align: center;
     }
-    #right > ul{
-        text-align:left
+
+    #right > ul {
+        text-align: left;
     }
-    #left > h3{
-        color:cornflowerblue
+
+    #left > h3 {
+        color: cornflowerblue;
     }
 </style>

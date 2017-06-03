@@ -61,9 +61,19 @@ namespace BookS.Controllers
         }
 
 
-        public ActionResult ChitietSP(int id = 1)
+        public ActionResult ChitietSP(int id)
         {
-            return View();
+            //hien thi thoung tin tong quan cua san pham
+            var chitiet = _data.CHI_TIETs.ToList();
+            List<CHI_TIET> retct = new List<CHI_TIET>();
+            foreach(var i in chitiet)
+            {
+                if (i.MaDev == id)
+                {
+                    retct.Add(i);
+                }
+            }
+            return View(retct);
         }
 
         public ActionResult ChitietSP1(int id)

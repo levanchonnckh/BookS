@@ -32,9 +32,10 @@ namespace BookS.Controllers
             return _data.TIN_TUC_tts.Take(count).ToList();
         }
 
-        public ActionResult Introduct()
+        public ActionResult Introduct(int id)
         {
-            return View();
+            var tin = _data.TIN_TUC_tts.SingleOrDefault(n => n.MaTin == id);
+            return View(tin);
         }
     }
 }

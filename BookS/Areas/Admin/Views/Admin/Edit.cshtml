@@ -7,11 +7,11 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
         <h4>DEVICE</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -46,11 +46,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AnhBia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="fileUpload"/>
-                <img src="@Url.Content("~/image/DEVICE/"+Model.AnhBia)" style="width:20%"/>(current)
-                @*thong bao*@
+                
 
+                <input id="file" type="file" name="fileUpload" />
+                
+
+
+                @*@Html.TextBox("fileUpload", "", new { type = "file" }) <br />*@
                 @ViewBag.thongbao
+                <img src="@Url.Content("~/image/DEVICE/"+Model.AnhBia)" style="width:20%"/>(current)
+                
             </div>
         </div>
 

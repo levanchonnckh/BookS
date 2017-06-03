@@ -1,0 +1,104 @@
+﻿@model IEnumerable<BookS.Models.DON_DAT_HANG>
+
+@{
+    ViewBag.Title = "donHang";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>donHang</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrangGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiao)
+        </td>
+        <td>
+            
+            @{ 
+                bool kt;
+                if (item.DaThanhToan.Equals(true))
+                {
+                    kt = true;
+                }
+                else
+                {
+                    kt = false;
+                }
+            }
+            @Html.CheckBox("hiem",kt)
+        </td>
+        <td>
+            
+            @{
+                bool kt1;
+                if (item.TinhTrangGiaoHang.Equals(true))
+                {
+                    kt1 = true;
+                }
+                else
+                {
+                    kt1 = false;
+                }
+            }
+            @Html.CheckBox("hiem", kt1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Update", "Update", new { id=item.MaDH }) |
+            @Html.ActionLink("Delete", "deleteDonHang", new { id=item.MaDH })
+        </td>
+    </tr>
+}
+
+</table>

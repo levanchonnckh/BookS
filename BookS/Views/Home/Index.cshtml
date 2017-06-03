@@ -22,8 +22,8 @@
                         <img src="~/image/DEVICE/@i.AnhBia" style="width:280px;height:280px" />
                     </div>
                     <div>
-                        <h4>@i.TenDevice</h4>
-
+                        
+                        <h4>@Html.ActionLink(@i.TenDevice, "ChitietSP1", new { id = @i.MaDevice })</h4>
                     </div>
                 </div>
             }
@@ -50,7 +50,7 @@
                         <img src="~/image/DEVICE/@i.AnhBia" style="width:280px;height:280px" />
                     </div>
                     <div>
-                        <h4>@i.TenDevice</h4>
+                        <h4>@Html.ActionLink(@i.TenDevice,"ChitietSP1",new { id = @i.MaDevice})</h4>
                     </div>
                 </div>
             }

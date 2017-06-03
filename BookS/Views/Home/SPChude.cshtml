@@ -15,9 +15,9 @@
                 foreach (var i in Model.icon)
                 {
                     <li style="margin-right:30px;margin-left:50px;">
-                        <a style="padding-top:10px;text-align:center" href="@Url.Action("ChitietSP","Home")">
+                        <a style="padding-top:10px;text-align:center" href="@Url.Action("ChitietSP","Home",new { id = @i.MaSp})">
                             <div>
-                                <img src="~/image/ICON/@i.IMG_ICON" />
+                                 <img src="~/image/ICON/@i.IMG_ICON" />
                             </div>
                             @if(Int32.Parse(@i.MaCD)==5){
                                 <span style="font-size:12px; display:block">@i.Name</span>

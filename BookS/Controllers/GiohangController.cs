@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BookS.Models;
 using BookS.Areas.admin.Models;
+using System.Net.Mail;
 
 namespace BookS.Controllers
 {
@@ -195,10 +196,11 @@ namespace BookS.Controllers
             //don dat hang
             //chi tiet don hang
             //thong tin nguoi nhan
+            DON_DAT_HANG ddh = new DON_DAT_HANG();
             if (kh != null)
             {
                 //luu tru don dat hang
-                DON_DAT_HANG ddh = new DON_DAT_HANG();
+                
                 List<Giohang> gh = Laygiohang();
                 ddh.MaKH = kh.MaKH;
                 ddh.NgayDH = DateTime.Now;
@@ -206,6 +208,10 @@ namespace BookS.Controllers
                 ddh.NgayGiao = DateTime.Parse(ngaygiao);
                 ddh.TinhTrangGiaoHang = false;
                 ddh.DaThanhToan = false;
+                ddh.Name = collection["name"];
+                ddh.Phone = collection["phone"];
+                ddh.Address = collection["address"];
+                ddh.Email = collection["email"];
                 db.DON_DAT_HANGs.InsertOnSubmit(ddh);
                 db.SubmitChanges();
                 //Them chi tiet don hang
@@ -220,29 +226,64 @@ namespace BookS.Controllers
                     db.CT_DON_HANGs.InsertOnSubmit(ctdh);
                 }
 
-                //shippng address
+
                 //ke ca co dang nhap va khong dang nhap
+                try
+                {
+                    db.SubmitChanges();
+                    Session["Giohang"] = null;
+                }
+                catch(Exception)
+                {
+
+                }
                 
-                db.SubmitChanges();
-                Session["Giohang"] = null;
+                
             }
             //neu khong dang nhap
             //luu thong tin dia chi nguoi nhan
             //don dat hang
             else
             {
-
+                Response.Write("<script>alert('that bai')</script>");
             }
-
-
             
             
-            
-            return RedirectToAction("Xacnhandonhang", "Giohang");
+            return RedirectToAction("Xacnhandonhang","Giohang",new { email = ddh.Email});
         }
 
-        public ActionResult Xacnhandonhang()
+        public ActionResult Xacnhandonhang(string email)
         {
+            if (String.IsNullOrEmpty(email))
+                return View();
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(email);
+                
+                mail.From = new MailAddress("docsattt@gmail.com");
+                mail.Subject = "Email using Gmail";
+
+                string Body = "Hi, this mail is to test sending mail" +
+                              "using Gmail in ASP.NET";
+                mail.Body = Body;
+
+                mail.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
+                smtp.Credentials = new System.Net.NetworkCredential
+                     ("docsattt@gmail.com", "@huongly2511");
+                //Or your Smtp Email ID and Password
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
+            catch (Exception)
+            {
+                
+                Response.Write("<script>alert('đơn hàng đã được gửi đến email của bạn')</script>");
+            }
+            ViewBag.email = email;
+
             return View();
         }
 
@@ -253,13 +294,73 @@ namespace BookS.Controllers
         //khong dang nhạp thi mu o ngoai
         public ActionResult thongTinGiaoHang()
         {
+            
             return View();
         }
 
         //kiem tra lan cuoi
+        [HttpGet]
         public ActionResult checkOut()
         {
-            return View();
+            if (Session["Giohang"] == null)
+            {
+                return RedirectToAction("index", "BookS");
+            }
+            List<Giohang> lstGiohang = Laygiohang();
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            return View(lstGiohang);
+        }
+
+        [HttpPost]
+        public ActionResult checkOut(FormCollection collection)
+        {
+            
+
+            //khach hang da dang nhap
+            //luu cac thong tin 
+            //don dat hang
+            //chi tiet don hang
+            //thong tin nguoi nhan
+            DON_DAT_HANG ddh = new DON_DAT_HANG();
+          
+
+                List<Giohang> gh = Laygiohang();
+            ddh.MaKH = 2;
+                ddh.NgayDH = DateTime.Now;
+                var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
+                ddh.NgayGiao = DateTime.Parse(ngaygiao);
+                ddh.TinhTrangGiaoHang = false;
+                ddh.DaThanhToan = false;
+                ddh.Name = collection["name"];
+                ddh.Phone = collection["phone"];
+                ddh.Address = collection["address"];
+                ddh.Email = collection["email"];
+                db.DON_DAT_HANGs.InsertOnSubmit(ddh);
+                db.SubmitChanges();
+                //Them chi tiet don hang
+                foreach (var item in gh)
+                {
+                    CT_DON_HANG ctdh = new CT_DON_HANG();
+                    int temp = db.DON_DAT_HANGs.ToList().Last().MaDH;
+                    ctdh.MaDH = ddh.MaDH;
+                    ctdh.MaDevice = item.iMasach;
+                    ctdh.SoLuong = item.iSoluong;
+                    ctdh.DonGia = (decimal)item.dDongia;
+                    db.CT_DON_HANGs.InsertOnSubmit(ctdh);
+                }
+                //ke ca co dang nhap va khong dang nhap
+                try
+                {
+                    db.SubmitChanges();
+                    Session["Giohang"] = null;
+                }
+                catch (Exception)
+                {
+
+                }
+
+            return RedirectToAction("Xacnhandonhang", "Giohang", new { email = ddh.Email });
         }
 
 

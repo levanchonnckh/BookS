@@ -17,16 +17,11 @@ namespace BookS.Controllers
             return View();
         }
 
-        public ActionResult login()
-        {
-            return View();
-        }
-
 
         [HttpGet]
         public ActionResult Dangky()
         {
-            return PartialView();
+            return View();
         }
 
         [HttpPost]
@@ -75,7 +70,7 @@ namespace BookS.Controllers
                 db.SubmitChanges();
                 return RedirectToAction("Dangnhap");                
             }
-            return PartialView();
+            return this.Dangky();
         }
         [HttpGet]
         public ActionResult Dangnhap()
@@ -89,18 +84,15 @@ namespace BookS.Controllers
         }
         //
         [HttpPost]
-        public ActionResult Dangnhap(FormCollection collection)
+        public ActionResult Dangnhap(FormCollection collection,string returnUrl)
         {
             var tendn = collection["TenDN"];
             var matkhau = collection["Matkhau"];
-            if (String.IsNullOrEmpty(tendn))
+            if (String.IsNullOrEmpty(tendn)|| String.IsNullOrEmpty(matkhau))
             {
-                ViewData["Loi1.1"] = "Phải nhập tên đăng nhập!";
-                Response.Write("<script>alert('Phải nhập tên đăng nhập!');</script>");
-            }
-            else if (String.IsNullOrEmpty(matkhau))
-            {
-                ViewData["Loi2.1"] = "Phải nhập mật khẩu!";
+                ViewData["Loi1"] = "Phải nhập tên đăng nhập!";
+                ViewData["Loi2"] = "Phải nhập mật khẩu!";
+                return View();
             }
             else
             {
@@ -113,9 +105,19 @@ namespace BookS.Controllers
                 else
                 {
                     ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                    return View();
                 }
             }
-            return RedirectToAction("login");
+            if (String.IsNullOrEmpty(returnUrl))
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect(returnUrl);
+            }
+            
+            
         }
     }
 

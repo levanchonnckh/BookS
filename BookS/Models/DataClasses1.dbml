@@ -7,16 +7,13 @@
       <Column Name="HO_TEN" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.[USER]" Member="USERs">
-    <Type Name="USER">
-      <Column Name="MaUser" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TaiKhoan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MatKhau" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+  <Table Name="dbo.titleCD" Member="titleCDs">
+    <Type Name="titleCD">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Img" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="CHU_DE_titleCD" Member="CHU_DE" ThisKey="MaCD" OtherKey="MaCD" Type="CHU_DE" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHI_TIET" Member="CHI_TIETs">
@@ -32,18 +29,18 @@
     <Type Name="CHU_DE">
       <Column Name="MaCD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TenChuDe" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="CHU_DE_DEVICE" Member="DEVICEs" ThisKey="MaCD" OtherKey="MaCD" Type="DEVICE" />
       <Association Name="CHU_DE_titleCD" Member="titleCDs" ThisKey="MaCD" OtherKey="MaCD" Type="titleCD" />
+      <Association Name="CHU_DE_DEVICE" Member="DEVICEs" ThisKey="MaCD" OtherKey="MaCD" Type="DEVICE" />
     </Type>
   </Table>
   <Table Name="dbo.CT_DON_HANG" Member="CT_DON_HANGs">
     <Type Name="CT_DON_HANG">
       <Column Name="MaDH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaDevice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaDevice" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Association Name="CT_DON_HANG_DON_DAT_HANG" Member="DON_DAT_HANG" ThisKey="MaDH" OtherKey="MaDH" Type="DON_DAT_HANG" Cardinality="One" />
       <Association Name="DEVICE_CT_DON_HANG" Member="DEVICE" ThisKey="MaDevice" OtherKey="MaDevice" Type="DEVICE" IsForeignKey="true" />
+      <Association Name="DON_DAT_HANG_CT_DON_HANG" Member="DON_DAT_HANG" ThisKey="MaDH" OtherKey="MaDH" Type="DON_DAT_HANG" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DEVICE" Member="DEVICEs">
@@ -77,10 +74,8 @@
       <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="CT_DON_HANG_DON_DAT_HANG" Member="CT_DON_HANG" ThisKey="MaDH" OtherKey="MaDH" Type="CT_DON_HANG" IsForeignKey="true" />
+      <Association Name="DON_DAT_HANG_CT_DON_HANG" Member="CT_DON_HANG" ThisKey="MaDH" OtherKey="MaDH" Type="CT_DON_HANG" Cardinality="One" />
       <Association Name="KHACH_HANG_DON_DAT_HANG" Member="KHACH_HANG" ThisKey="MaKH" OtherKey="MaKH" Type="KHACH_HANG" IsForeignKey="true" />
-      <Association Name="KHACH_HANG_DON_DAT_HANG1" Member="KHACH_HANG1" ThisKey="MaKH" OtherKey="MaKH" Type="KHACH_HANG" IsForeignKey="true" />
-      <Association Name="ShippingAddress_DON_DAT_HANG" Member="ShippingAddress" ThisKey="MaDH" OtherKey="IDdonHang" Type="ShippingAddress" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ICON" Member="ICONs">
@@ -103,7 +98,6 @@
       <Column Name="DienThoai" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="KHACH_HANG_DON_DAT_HANG" Member="DON_DAT_HANGs" ThisKey="MaKH" OtherKey="MaKH" Type="DON_DAT_HANG" />
-      <Association Name="KHACH_HANG_DON_DAT_HANG1" Member="DON_DAT_HANGs1" ThisKey="MaKH" OtherKey="MaKH" Type="DON_DAT_HANG" />
     </Type>
   </Table>
   <Table Name="dbo.NHA_SAN_XUAT" Member="NHA_SAN_XUATs">
@@ -127,24 +121,16 @@
       <Association Name="DEVICE_Sheet1_" Member="DEVICE" ThisKey="MaDev" OtherKey="MaDevice" Type="DEVICE" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ShippingAddress" Member="ShippingAddresses">
-    <Type Name="ShippingAddress">
-      <Column Name="IDdonHang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.[USER]" Member="USERs">
+    <Type Name="USER">
+      <Column Name="MaUser" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TaiKhoan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MatKhau" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NgayGiao" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="ShippingAddress_DON_DAT_HANG" Member="DON_DAT_HANG" ThisKey="IDdonHang" OtherKey="MaDH" Type="DON_DAT_HANG" Cardinality="One" />
-    </Type>
-  </Table>
-  <Table Name="dbo.titleCD" Member="titleCDs">
-    <Type Name="titleCD">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MaCD" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Img" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="CHU_DE_titleCD" Member="CHU_DE" ThisKey="MaCD" OtherKey="MaCD" Type="CHU_DE" IsForeignKey="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

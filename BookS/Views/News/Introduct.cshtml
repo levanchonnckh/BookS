@@ -1,17 +1,28 @@
-﻿
+﻿@model BookS.Models.TIN_TUC_tt
+
 @{
-    ViewBag.Title = "Introduct";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<div class="row">
-    <div class="col-md-10 col-md-offset-2">
-        <h2>Introduct</h2>
-        <div>
 
-        </div>
-    </div>
-    
+
+
+<div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <hr />
+               
+
+                <div class="col-md-12">
+                    <img src="~/image/bia_TinTuc/@Model.AnhBia" style="width:100%;" />
+                </div>
+                <div class="col-md-12" style="margin-top:20px;margin-bottom:20px;">
+                    <h3><a href="@Url.Action("introduct","News")">@Model.TieuDe</a></h3>
+                    <p id="noidung">@Model.NoiDung</p>
+
+                </div>
+            </div>
 </div>
+
+
 
 

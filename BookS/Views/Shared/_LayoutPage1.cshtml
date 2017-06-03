@@ -39,18 +39,23 @@
             <nav class="navbar navbar-inverse navbar-fixed-top">
               
                 <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="@Url.Action("Index","Home")">COO</a>
+                    </div>
                     <div style="margin-left:100px;margin-right:100px;">
                         <ul class="nav nav-justified" style="margin:auto">
-                            <li class="navbar-brand">coo</li>
+                            
                             <li><a href="@Url.Action("SPChude","Home",new {id = 4})">Mac</a></li>
                             <li><a href="@Url.Action("SPChude","Home",new {id = 1})">iPhone</a></li>
                             <li><a href="@Url.Action("SPChude","Home",new {id = 2})">iPad</a></li>
                             <li><a href="@Url.Action("SPChude","Home",new {id = 5})">Watch</a></li>
                             <li><a href="@Url.Action("Index","News")">News</a></li>
-                            <li><a href="@Url.Action("SPChude","Home")">Contact</a></li>
+                            <li><a href="@Url.Action("contact","Home")">Contact</a></li>
                             <li><a href="@Url.Action("Introduct","News")">Introduce</a></li>
                             <li>@Html.Action("GiohangPartial", "GioHang")</li>
-                            <li><a href="@Url.Action("login","NguoiDung")"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                            <li><a href="@Url.Action("Dangky","NguoiDung")"><span class="glyphicon glyphicon-user"></span></a></li>
+                            <li><a href="@Url.Action("Dangnhap","NguoiDung")"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -77,7 +82,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Team 13</p>
                 </div>
             </div>
         </footer>

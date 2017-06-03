@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
 <style type="text/css">
     td {
         text-align: right;
@@ -10,21 +12,24 @@
 <hr />
 <table align="center">
 
-    @using (Html.BeginForm("Dangnhap","NguoiDung",FormMethod.Post))
+    @using (Html.BeginForm("Dangnhap","NguoiDung",new { returnUrl = "http://localhost:1979/Giohang/GioHang"},FormMethod.Post))
     {
         @Html.ValidationSummary(true)
         <tr style="height:40px;">
             <td>Tên đăng nhập:</td>
             <td>
                 <input type="email" class="form-control" id="inputEmail3" placeholder="example@gmail.com" name="TenDN">
+            </td>
+            <td id="wn">
                 @ViewData["Loi1"]
-                
             </td>
         </tr>
         <tr style="height:40px;">
             <td>Mật khẩu:</td>
             <td>
-                <input type="text" class="form-control" id="inputEmail3" placeholder="*************" name="Matkhau">
+                <input type="password" class="form-control" id="inputEmail3" placeholder="*************" name="Matkhau">
+            </td>
+            <td id="wn">
                 @ViewData["Loi2"]
             </td>
         </tr>
@@ -36,5 +41,12 @@
         </tr>
     }
 </table>
+
+<style>
+    #wn{
+        color:red;
+    }
+</style>
+
 
 

@@ -10,15 +10,32 @@
     <link href="/css/shop-homepage.css" rel="stylesheet">
 
     <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>
+    <script>tinymce.init({
+    selector: 'textarea', plugins: "image",
+    
+    toolbar: "image",
+    
+});</script>
     <title>@ViewBag.Title</title>
 </head>
 <body style="margin-top:-70px">
-    <nav class="navbar-default container">
-        <ul class="nav navbar-default">
-            <li>DEVICE</li>
-        </ul>
+    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="@Url.Action("device","Admin")">DEVICE</a></li>
+                <li><a href="@Url.Action("user","Admin")">USER</a></li>
+                <li><a href="#">DON HANG</a></li>
+                <li><a href="@Url.Action("Index","News")">TIN TUC</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
     </nav>
+
 
     <div class="container">
         @RenderBody()

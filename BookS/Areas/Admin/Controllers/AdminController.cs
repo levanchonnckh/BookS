@@ -195,15 +195,11 @@ namespace BookS.Areas.admin.Controllers
 
             ViewBag.MaCD = new SelectList(db.CHU_DEs.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChuDe");
             ViewBag.MaNSX = new SelectList(db.NHA_SAN_XUATs.ToList().OrderBy(n => n.TenNSX), "MaNSX", "TenNSX");
+            DEVICE devS = db.DEVICEs.Single(n => n.MaDevice == dev.MaDevice);
 
-            if (fileUpload == null)
+            if (ModelState.IsValid)
             {
-                ViewBag.thongbao = "vui lòng chọn hình ảnh";
-                return View();
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                if (fileUpload != null)
                 {
                     //luu ten file
                     var fileName = Path.GetFileName(fileUpload.FileName);
@@ -218,18 +214,90 @@ namespace BookS.Areas.admin.Controllers
                     {
                         fileUpload.SaveAs(path);
                     }
-
                     dev.AnhBia = fileName;
-                    UpdateModel(dev);
-                    db.SubmitChanges();
                 }
+                else
+                {
+                    dev.AnhBia = devS.AnhBia;
+                }
+                
 
-                return View("device");
+                
+                
+                db.DEVICEs.DeleteOnSubmit(devS);
+                db.DEVICEs.InsertOnSubmit(dev);
+                db.SubmitChanges();
             }
 
-
-
+            return RedirectToAction("device");
         }
+
+        public ActionResult user()
+        {
+            var kh = db.KHACH_HANGs.ToList();
+            return View(kh);
+        }
+
+        //user
+        [HttpGet]
+        public ActionResult DeleteUser(int id)
+        {
+            KHACH_HANG dev = db.KHACH_HANGs.SingleOrDefault(n => n.MaKH == id);
+            if (dev == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            db.KHACH_HANGs.DeleteOnSubmit(dev);
+            db.SubmitChanges();
+            return RedirectToAction("user");
+        }
+        //
+
+        public ActionResult donHang()
+        {
+            
+            var dh = db.DON_DAT_HANGs.ToList();
+            return View(dh);
+        }
+
+        [HttpGet]
+        public ActionResult deleteDonHang(int id)
+        {
+            CT_DON_HANG dev = db.CT_DON_HANGs.SingleOrDefault(n => n.MaDH == id);
+            DON_DAT_HANG don = db.DON_DAT_HANGs.SingleOrDefault(n => n.MaDH == id);
+            if (dev == null||don==null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            try
+            {
+                db.CT_DON_HANGs.DeleteOnSubmit(dev);
+                db.DON_DAT_HANGs.DeleteOnSubmit(don);
+            }
+            catch ( Exception e)
+            {
+                Response.Write(e.Message);
+            }
+            
+
+
+
+
+
+            db.SubmitChanges();
+            return RedirectToAction("donHang");
+        }
+
+        public ActionResult chitiet()
+        {
+            var chitiet = db.DON_DAT_HANGs.SingleOrDefault(n=>n.MaDH==14);
+            return View(chitiet);
+        }
+
+       
 
 
     }

@@ -20,39 +20,18 @@
             <div class="col-md-8 col-md-offset-2">
                 <hr />
                 <div class="col-md-2"style="margin-bottom:20px;">
-                    <img src="https://dummyimage.com/320x320/000/fff" style="width:70%;" class="img-circle"/>
+                    <img src="https://www.iconfinder.com/data/icons/ieducation-set-8/512/badass-512.png" style="width:70%;" class="img-circle"/>
                 </div>
                 <div class="col-md-5">
-                    <h3>Lê Văn Chơn</h3>
+                    <h3>@i.ADMIN_tt.TenAdmin</h3>
                 </div>
-                
                 <div class="col-md-12">
                     <img src="~/image/bia_TinTuc/@i.AnhBia" style="width:100%;"/>
                 </div>
-                <div class="col-md-10" style="margin-top:20px;margin-bottom:20px;">
-                    <h3>@i.TieuDe</h3>
+                <div class="col-md-12" style="margin-top:20px;margin-bottom:20px;">
+                    <h3><a href="@Url.Action("introduct","News",new { id = @i.MaTin})">@i.TieuDe</a></h3>
                     <p id="noidung">@i.Tomtat</p>
-                    <a id="toggleButton" onclick="toggleText();" href="javascript:void(0);">See More</a>
-
-
-                    <script type="text/javascript">
-                        var status = "less";
-                        function toggleText() {
-                            var text = "Here is some text that I want added to the HTML file";
-
-                            if (status == "less") {
-                                document.getElementById("noidung").innerHTML = text;
-                                document.getElementById("toggleButton").innerText = "See Less";
-                                status = "more";
-                            } else if (status == "more") {
-                                document.getElementById("noidung").innerHTML = "";
-                                document.getElementById("toggleButton").innerText = "See More";
-                                status = "less"
-                            }
-                        }
-                    </script>
-
-
+                    
                 </div>
             </div>
         }

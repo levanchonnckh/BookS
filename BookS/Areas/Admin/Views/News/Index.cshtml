@@ -1,0 +1,114 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using BookS.Models
+@using PagedList.Mvc;
+@helper Truncate(string input, int lenght)
+{
+if (input != null)
+{
+    if (input.Length < lenght)
+    {
+            @input
+    }
+    else
+    {
+            @input.Substring(0, lenght)<text>...</text>
+        }
+    }
+}
+
+
+@model PagedList.PagedList<TIN_TUC_tt>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TieuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Tomtat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NoiDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().AnhBia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaCD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ADMIN_tt.TenAdmin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NgayDang)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="font-style:italic">
+            @Html.DisplayFor(modelItem => item.TieuDe)
+        </td>
+        <td>
+            
+            @Truncate(item.Tomtat,100)
+        </td>
+        <td>
+           
+            @Truncate(item.NoiDung, 100);
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnhBia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaCD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADMIN_tt.TenAdmin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDang)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTin }) |
+            @Html.ActionLink("Details", "detail", new { id=item.MaTin }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTin })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@*Tạo liện kết các trang*@
+
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+    }
+
+    .left {
+    }
+
+    .right {
+    }
+
+    .p {
+        padding-top: 130px;
+    }
+</style>
