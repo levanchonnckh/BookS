@@ -198,6 +198,7 @@
     </Compile>
     <Compile Include="Models\device_head.cs" />
     <Compile Include="Models\Giohang.cs" />
+    <Compile Include="Models\New_Hot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -234,6 +235,7 @@
     <Content Include="Views\Giohang\Buy.cshtml" />
     <Content Include="Views\Giohang\Xacnhandonhang.cshtml" />
     <Content Include="Views\News\Introduct.cshtml" />
+    <Content Include="Views\NguoiDung\loginPart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

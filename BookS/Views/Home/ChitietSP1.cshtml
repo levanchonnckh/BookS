@@ -39,7 +39,8 @@
             </div>
             <div class="col-md-12">
                 <hr />
-                <h2 style="color:red">Giá bán: @Model.detailD.GiaBan $</h2>
+                
+                <h3 style="color:red">Giá: @String.Format("{0:0,0}", @Int32.Parse(@Model.detailD.GiaBan) * 22000) VND</h3>
                 <a href="@Url.Action("Buy","Giohang",new { id = Model.detailD.MaDevice})" class="btn btn-primary" role="button">Buy</a>
                 
             </div>

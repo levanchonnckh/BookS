@@ -26,12 +26,12 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="@Url.Action("device","Admin")">DEVICE</a></li>
                 <li><a href="@Url.Action("user","Admin")">USER</a></li>
-                <li><a href="#">DON HANG</a></li>
+                <li><a href="@Url.Action("donHang","Admin")">DON HANG</a></li>
                 <li><a href="@Url.Action("Index","News")">TIN TUC</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                
+                <li><a href="@Url.Action("dangxuat","Admin")"><span class="glyphicon glyphicon-log-in"></span> Đăng xuất</a></li>
             </ul>
         </div>
     </nav>

@@ -35,19 +35,20 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="@Url.Action("Index","Home")">COO</a>
             </div>
-            <div class="col-md-5 col-md-offset-4">
+            <div class="col-md-5 col-md-offset-3">
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.Action("SPChude","Home",new {id = 4})">Mac</a></li>
                     <li><a href="@Url.Action("SPChude","Home",new {id = 1})">iPhone</a></li>
                     <li><a href="@Url.Action("SPChude","Home",new {id = 2})">iPad</a></li>
                     <li><a href="@Url.Action("SPChude","Home",new {id = 5})">Watch</a></li>
                     <li><a href="@Url.Action("SPChude","Home",new {id = 1})">News</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="@Url.Action("contact","Home")">Contact</a></li>
                 </ul>
             </div>
             
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="@Url.Action("login","NguoiDung")"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+                @Html.Action("loginPart", "NguoiDung")
+                <li><a href="@Url.Action("Dangxuat","NguoiDung")"><span class="glyphicon glyphicon-log-in"></span> Đăng xuất</a></li>
             </ul>
         </div>
     </nav>

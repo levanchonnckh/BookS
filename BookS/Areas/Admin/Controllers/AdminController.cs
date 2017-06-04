@@ -55,8 +55,25 @@ namespace BookS.Areas.admin.Controllers
             return Content("bạn không có quyền truy cập");
         }
 
+        public bool check()
+        {
+            //neu chua dang nhap
+            if(!string.IsNullOrEmpty(Session["email"] as string))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public ActionResult device(int? page)
         {
+            if (check())
+            {
+                return RedirectToAction("admin_home");
+            }
             int pageSize = 5;
             int pageNum = (page ?? 1);
 
@@ -234,6 +251,10 @@ namespace BookS.Areas.admin.Controllers
 
         public ActionResult user()
         {
+            if (check())
+            {
+                return RedirectToAction("admin_home");
+            }
             var kh = db.KHACH_HANGs.ToList();
             return View(kh);
         }
@@ -256,7 +277,10 @@ namespace BookS.Areas.admin.Controllers
 
         public ActionResult donHang()
         {
-            
+            if (check())
+            {
+                return RedirectToAction("admin_home");
+            }
             var dh = db.DON_DAT_HANGs.ToList();
             return View(dh);
         }
@@ -295,6 +319,12 @@ namespace BookS.Areas.admin.Controllers
         {
             var chitiet = db.DON_DAT_HANGs.SingleOrDefault(n=>n.MaDH==14);
             return View(chitiet);
+        }
+
+        public ActionResult dangxuat()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("Index");
         }
 
        

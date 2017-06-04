@@ -1,0 +1,18 @@
+﻿@model BookS.Models.KHACH_HANG
+
+<li>
+    @if (Model==null)
+    {
+        <a href="@Url.Action("Dangnhap","NguoiDung")">
+            Đăng Nhập
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    }
+    else
+    {
+        <a href="@Url.Action("Dangnhap","NguoiDung")">
+            @Model.HoTen
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    }
+</li>

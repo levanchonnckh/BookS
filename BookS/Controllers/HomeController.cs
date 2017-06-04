@@ -19,8 +19,18 @@ namespace BookS.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var gDevice = _data.DEVICEs.Where(dev => dev.MaDevice == 5 || dev.MaDevice == 9 || dev.MaDevice == 15 || dev.MaDevice == 2 || dev.MaDevice == 4 || dev.MaDevice == 25).Select(dev => dev).ToList();
-            return View(gDevice);
+            New_Hot ret = new New_Hot();
+            ret.moi = new List<DEVICE>();
+            ret.banChay = new List<CT_DON_HANG>();
+            var moi = _data.DEVICEs.OrderBy(n => n.NgayCapNhat).Take(3);
+            ret.moi = moi;
+
+            var query = _data.CT_DON_HANGs.Take(3);
+            
+            ret.banChay = query;
+
+
+            return View(ret);
         }
 
        

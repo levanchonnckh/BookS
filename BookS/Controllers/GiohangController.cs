@@ -214,29 +214,22 @@ namespace BookS.Controllers
                 ddh.Email = collection["email"];
                 db.DON_DAT_HANGs.InsertOnSubmit(ddh);
                 db.SubmitChanges();
+                int temp = db.DON_DAT_HANGs.ToList().Last().MaDH;
                 //Them chi tiet don hang
                 foreach (var item in gh)
                 {
                     CT_DON_HANG ctdh = new CT_DON_HANG();
-                    int temp = db.DON_DAT_HANGs.ToList().Last().MaDH;
-                    ctdh.MaDH = ddh.MaDH;
+                    
+                    ctdh.MaDH = temp;
                     ctdh.MaDevice = item.iMasach;
                     ctdh.SoLuong = item.iSoluong;
                     ctdh.DonGia = (decimal)item.dDongia;
                     db.CT_DON_HANGs.InsertOnSubmit(ctdh);
                 }
 
-
+                db.SubmitChanges();
                 //ke ca co dang nhap va khong dang nhap
-                try
-                {
-                    db.SubmitChanges();
-                    Session["Giohang"] = null;
-                }
-                catch(Exception)
-                {
-
-                }
+                
                 
                 
             }
@@ -249,40 +242,13 @@ namespace BookS.Controllers
             }
             
             
-            return RedirectToAction("Xacnhandonhang","Giohang",new { email = ddh.Email});
+            return RedirectToAction("Xacnhandonhang","Giohang",new { sdt = ddh.Phone});
         }
 
-        public ActionResult Xacnhandonhang(string email)
+        public ActionResult Xacnhandonhang(string sdt)
         {
-            if (String.IsNullOrEmpty(email))
-                return View();
-            try
-            {
-                MailMessage mail = new MailMessage();
-                mail.To.Add(email);
-                
-                mail.From = new MailAddress("docsattt@gmail.com");
-                mail.Subject = "Email using Gmail";
-
-                string Body = "Hi, this mail is to test sending mail" +
-                              "using Gmail in ASP.NET";
-                mail.Body = Body;
-
-                mail.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
-                smtp.Credentials = new System.Net.NetworkCredential
-                     ("docsattt@gmail.com", "@huongly2511");
-                //Or your Smtp Email ID and Password
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-            }
-            catch (Exception)
-            {
-                
-                Response.Write("<script>alert('đơn hàng đã được gửi đến email của bạn')</script>");
-            }
-            ViewBag.email = email;
+           
+            ViewBag.sdt = sdt;
 
             return View();
         }

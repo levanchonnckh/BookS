@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BookS.Models.DEVICE>
+﻿@model BookS.Models.New_Hot
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,27 +8,17 @@
     <h3>Sản phẩm bán chạy nhất</h3>
     <hr />
     @{
-        var dem = 0;
-        foreach (var i in Model)
+        foreach (var i in Model.banChay)
         {
-            if (dem == 3)
-            {
-                break;
-            }
-            else
-            {
-                <div class="col-md-4 text-center">
-                    <div>
-                        <img src="~/image/DEVICE/@i.AnhBia" style="width:280px;height:280px" />
-                    </div>
-                    <div>
-                        
-                        <h4>@Html.ActionLink(@i.TenDevice, "ChitietSP1", new { id = @i.MaDevice })</h4>
-                    </div>
+            <div class="col-md-4 text-center">
+                <div>
+                    <img src="~/image/DEVICE/@i.DEVICE.AnhBia" style="width:280px;height:280px" />
                 </div>
-            }
-            dem++;
+                <div>
 
+                    <h4>@Html.ActionLink(@i.DEVICE.TenDevice, "ChitietSP1", new { id = @i.MaDevice })</h4>
+                </div>
+            </div>
         }
     }
 </div>
@@ -40,23 +30,17 @@
     <h3>Sản phẩm mới nhất</h3>
     <hr />
     @{
-        var dem2 = 0;
-        foreach (var i in Model)
+
+        foreach (var i in Model.moi)
         {
-            if (3 <= dem2 && dem2 < 7)
-            {
-                <div class="col-md-4 text-center">
-                    <div>
-                        <img src="~/image/DEVICE/@i.AnhBia" style="width:280px;height:280px" />
-                    </div>
-                    <div>
-                        <h4>@Html.ActionLink(@i.TenDevice,"ChitietSP1",new { id = @i.MaDevice})</h4>
-                    </div>
+            <div class="col-md-4 text-center">
+                <div>
+                    <img src="~/image/DEVICE/@i.AnhBia" style="width:280px;height:280px" />
                 </div>
-            }
-
-            dem2++;
-
+                <div>
+                    <h4>@Html.ActionLink(@i.TenDevice, "ChitietSP1", new { id = @i.MaDevice })</h4>
+                </div>
+            </div>
         }
     }
 </div>

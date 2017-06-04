@@ -77,6 +77,18 @@ namespace BookS.Controllers
         {
             return View();
         }
+
+        public ActionResult Dangxuat()
+        {
+            KHACH_HANG kh = new KHACH_HANG();
+            kh = Session["Taikhoan"] as KHACH_HANG;
+            //co nguoi dang nhap
+            if (kh != null)
+            {
+                Session.RemoveAll();
+            }
+            return RedirectToAction("Index", "Home");
+        }
         
         public ActionResult loginP()
         {
@@ -118,6 +130,15 @@ namespace BookS.Controllers
             }
             
             
+        }
+
+        public ActionResult loginPart()
+        {
+            KHACH_HANG kh = new KHACH_HANG();
+            kh = Session["Taikhoan"] as KHACH_HANG;
+            
+
+            return PartialView(kh);
         }
     }
 

@@ -38,12 +38,12 @@
         <div class="row">
             <nav class="navbar navbar-inverse navbar-fixed-top">
               
-                <div class="container">
+                <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="@Url.Action("Index","Home")">COO</a>
                     </div>
-                    <div style="margin-left:100px;margin-right:100px;">
-                        <ul class="nav nav-justified" style="margin:auto">
+                    <div class="col-md-5 col-md-offset-3" >
+                        <ul class="nav navbar-nav" style="margin:auto">
                             
                             <li><a href="@Url.Action("SPChude","Home",new {id = 4})">Mac</a></li>
                             <li><a href="@Url.Action("SPChude","Home",new {id = 1})">iPhone</a></li>
@@ -51,13 +51,17 @@
                             <li><a href="@Url.Action("SPChude","Home",new {id = 5})">Watch</a></li>
                             <li><a href="@Url.Action("Index","News")">News</a></li>
                             <li><a href="@Url.Action("contact","Home")">Contact</a></li>
-                            <li><a href="@Url.Action("Introduct","News")">Introduce</a></li>
+                            
                             <li>@Html.Action("GiohangPartial", "GioHang")</li>
-                            <li><a href="@Url.Action("Dangky","NguoiDung")"><span class="glyphicon glyphicon-user"></span></a></li>
-                            <li><a href="@Url.Action("Dangnhap","NguoiDung")"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                            
                             
                         </ul>
+                       
                     </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        @Html.Action("loginPart", "NguoiDung")
+                        <li><a href="@Url.Action("Dangxuat","NguoiDung")"><span class="glyphicon glyphicon-log-in"></span> Đăng xuất</a></li>
+                    </ul>
                 </div>
                
             </nav>
